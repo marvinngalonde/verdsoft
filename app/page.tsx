@@ -32,9 +32,7 @@ import {
 } from "lucide-react"
 import { useEffect, useState, useCallback } from "react"
 import SplitText from "@/components/split-text";
-import StarBorder from "@/components/star-border";
 import ParticleBackground from "@/components/particle-background";
-import ElectricBorder from "@/components/electric-border";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import CardsContainer from "@/components/cards-container";
@@ -334,14 +332,12 @@ export default function HomePage() {
                   <div className="font-semibold text-sm text-gray-900">+263 787 062 575</div>
                 </div>
               </div>
-              <StarBorder>
-                <Button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 text-sm font-semibold h-10 shadow-md hover:shadow-lg transition-all"
-                  onClick={() => setIsQuoteModalOpen(true)}
-                >
-                  GET A QUOTE <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </StarBorder>
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 text-sm font-semibold h-10 shadow-md hover:shadow-lg transition-all"
+                onClick={() => setIsQuoteModalOpen(true)}
+              >
+                GET A QUOTE <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="w-6 h-6" />
               </Button>
@@ -381,38 +377,22 @@ export default function HomePage() {
         </div>
 
         {/* Gradient Overlay for better text readability */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#0a1628]/95 via-[#1a237e]/90 to-[#0d1b3a]/95 pointer-events-none"></div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#0a1628]/70 via-[#1a237e]/60 to-[#0d1b3a]/70 pointer-events-none"></div>
 
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[75vh]">
             {/* Left Column - Text Content */}
-            <div className="text-white text-left space-y-8">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-400/30 rounded-full backdrop-blur-sm">
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold tracking-wider text-blue-300 uppercase">
-                  {mounted ? (
-                    <SplitText text="Smart. Scalable. Secure." splitType="words" className="inline-block" textAlign="left" />
-                  ) : (
-                    "Smart. Scalable. Secure."
-                  )}
-                </span>
-              </div>
-
+            <div className="text-white text-left space-y-6">
               {/* Main Heading */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                   {mounted ? (
-                    <SplitText text="Innovative" splitType="words" className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent" textAlign="left" />
+                    <SplitText text="Innovative" splitType="words" className="block text-white" textAlign="left" />
                   ) : (
-                    <span className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Innovative</span>
+                    <span className="block text-white">Innovative</span>
                   )}
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300 mt-2"
-                    style={{
-                      textShadow: "0 0 40px rgba(59, 130, 246, 0.5)",
-                    }}
-                  >
+                  <span className="block text-white mt-2">
                     {mounted ? (
                       <SplitText text="I.T Solutions" splitType="words" className="block" textAlign="left" />
                     ) : (
@@ -422,25 +402,8 @@ export default function HomePage() {
                 </h1>
               </div>
 
-              {/* Rotating Service Text */}
-              <div className="min-h-[32px]">
-                <div className="text-xl lg:text-2xl font-semibold text-blue-300">
-                  {mounted ? (
-                    <SplitText
-                      key={serviceIdx}
-                      text={serviceTexts[serviceIdx]}
-                      splitType="words"
-                      className="inline-block"
-                      textAlign="left"
-                    />
-                  ) : (
-                    serviceTexts[serviceIdx]
-                  )}
-                </div>
-              </div>
-
               {/* Description */}
-              <p className="text-lg text-blue-100/90 leading-relaxed max-w-xl">
+              <p className="text-lg text-gray-200 leading-relaxed max-w-xl">
                 {mounted ? (
                   <SplitText
                     text="Transform your business with cutting-edge technology solutions. We deliver responsive, secure, and scalable IT services tailored to drive your success in the digital age."
@@ -454,20 +417,18 @@ export default function HomePage() {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
-                <StarBorder>
-                  <Button
-                    size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-base font-semibold rounded-lg shadow-lg shadow-blue-500/50 transition-all hover:shadow-xl hover:shadow-blue-500/60"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    Get Started
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </StarBorder>
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+                  onClick={() => scrollToSection("contact")}
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-blue-400/50 bg-blue-500/10 hover:bg-blue-500/20 text-white px-8 py-6 text-base font-semibold rounded-lg backdrop-blur-sm transition-all"
+                  className="border-2 border-white/30 bg-white/10 hover:bg-white/20 text-white px-8 py-3 text-base font-semibold rounded-lg backdrop-blur-sm transition-all"
                   onClick={() => scrollToSection("portfolio")}
                 >
                   View Portfolio
@@ -548,28 +509,25 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image Column */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-xl overflow-hidden shadow-md w-11/12 mx-auto">
                 <img
                   src="/maledev.png"
                   alt="About Company"
                   className="w-full h-auto object-cover"
                 />
                 {/* Overlay Badge */}
-                <div className="absolute bottom-6 left-6 bg-white rounded-xl px-6 py-4 shadow-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-blue-600 p-3 rounded-lg">
-                      <Award className="w-6 h-6 text-white" />
+                <div className="absolute bottom-4 left-4 bg-white rounded-lg px-4 py-3 shadow-md">
+                  <div className="flex items-center gap-2">
+                    <div className="bg-blue-600 p-2 rounded-lg">
+                      <Award className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-gray-900">5+</div>
-                      <div className="text-sm text-gray-600">Years Experience</div>
+                      <div className="text-xl font-bold text-gray-900">5+</div>
+                      <div className="text-xs text-gray-600">Years Experience</div>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-cyan-600/10 rounded-full blur-2xl"></div>
             </div>
 
             {/* Content Column */}
@@ -589,57 +547,57 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                <Card className="p-5 hover:shadow-lg transition-all border-none bg-white/80 backdrop-blur-sm">
+              <div className="grid sm:grid-cols-2 gap-3 pt-4">
+                <Card className="p-4 hover:shadow-md transition-all border-none bg-white shadow-sm">
                   <div className="flex items-start gap-3">
-                    <div className="bg-blue-100 p-3 rounded-xl">
-                      <Code className="w-6 h-6 text-blue-600" />
+                    <div className="bg-blue-100 p-2 rounded-lg">
+                      <Code className="w-5 h-5 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-2">Web Development</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="text-base font-bold mb-1">Web Development</h3>
+                      <p className="text-xs text-gray-600">
                         Modern, responsive websites built with cutting-edge technologies.
                       </p>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-5 hover:shadow-lg transition-all border-none bg-white/80 backdrop-blur-sm">
+                <Card className="p-4 hover:shadow-md transition-all border-none bg-white shadow-sm">
                   <div className="flex items-start gap-3">
-                    <div className="bg-cyan-100 p-3 rounded-xl">
-                      <Monitor className="w-6 h-6 text-cyan-600" />
+                    <div className="bg-cyan-100 p-2 rounded-lg">
+                      <Monitor className="w-5 h-5 text-cyan-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-2">Mobile Apps</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="text-base font-bold mb-1">Mobile Apps</h3>
+                      <p className="text-xs text-gray-600">
                         Custom iOS and Android apps that engage and convert users.
                       </p>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-5 hover:shadow-lg transition-all border-none bg-white/80 backdrop-blur-sm">
+                <Card className="p-4 hover:shadow-md transition-all border-none bg-white shadow-sm">
                   <div className="flex items-start gap-3">
-                    <div className="bg-purple-100 p-3 rounded-xl">
-                      <Database className="w-6 h-6 text-purple-600" />
+                    <div className="bg-purple-100 p-2 rounded-lg">
+                      <Database className="w-5 h-5 text-purple-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-2">Software Solutions</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="text-base font-bold mb-1">Software Solutions</h3>
+                      <p className="text-xs text-gray-600">
                         End-to-end software tailored to your business needs.
                       </p>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-5 hover:shadow-lg transition-all border-none bg-white/80 backdrop-blur-sm">
+                <Card className="p-4 hover:shadow-md transition-all border-none bg-white shadow-sm">
                   <div className="flex items-start gap-3">
-                    <div className="bg-green-100 p-3 rounded-xl">
-                      <MessageCircle className="w-6 h-6 text-green-600" />
+                    <div className="bg-green-100 p-2 rounded-lg">
+                      <MessageCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-2">AI Chatbots</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="text-base font-bold mb-1">AI Chatbots</h3>
+                      <p className="text-xs text-gray-600">
                         Intelligent automation for enhanced customer engagement.
                       </p>
                     </div>
@@ -676,33 +634,33 @@ export default function HomePage() {
                   const IconComponent = service.icon
                   return (
                     <div key={service.id} className="embla__slide min-w-0 flex-grow-0 flex-shrink-0 basis-full pl-4 md:basis-1/2 lg:basis-1/3">
-                      <Card className="group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border-none bg-gradient-to-br from-white to-gray-50">
+                      <Card className="group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden border-none bg-white shadow-sm">
                         <CardContent className="p-0">
                           <div className="relative overflow-hidden">
                             <img
                               src={service.image}
                               alt={service.title}
-                              className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute top-4 left-4 bg-white p-3 rounded-xl shadow-lg group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                              <IconComponent className="w-6 h-6" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute top-3 left-3 bg-white p-2 rounded-lg shadow-md group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                              <IconComponent className="w-5 h-5" />
                             </div>
                           </div>
-                          <div className="p-6">
-                            <Badge className="bg-blue-50 text-blue-600 border-none mb-3 text-xs font-semibold">
+                          <div className="p-5">
+                            <Badge className="bg-blue-50 text-blue-600 border-none mb-2 text-xs font-semibold">
                               {service.category}
                             </Badge>
-                            <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                            <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
                               {service.title}
                             </h3>
-                            <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                            <p className="text-sm text-gray-600 mb-3 leading-relaxed">
                               {service.description}
                             </p>
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="rounded-full bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-600 w-10 h-10 p-0 transition-all"
+                              className="rounded-full bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-600 w-9 h-9 p-0 transition-all"
                             >
                               <ArrowRight className="w-4 h-4" />
                             </Button>
@@ -735,32 +693,32 @@ export default function HomePage() {
       {/* Services Grid Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50/30 fade-in-section">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-8">
-            <Card className="text-center p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-none bg-white/80 backdrop-blur-sm group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-blue-600 group-hover:to-blue-500 transition-all duration-300">
-                <span className="text-2xl font-bold text-blue-600 group-hover:text-white transition-colors">01</span>
+          <div className="grid lg:grid-cols-3 gap-6">
+            <Card className="text-center p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300 border-none bg-white shadow-sm group">
+              <div className="bg-gradient-to-br from-blue-100 to-blue-50 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-blue-600 group-hover:to-blue-500 transition-all duration-300">
+                <span className="text-xl font-bold text-blue-600 group-hover:text-white transition-colors">01</span>
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">IT Management</h3>
+              <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">IT Management</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Strategic IT management solutions to ensure proactive operations and drive business growth.
               </p>
             </Card>
 
-            <Card className="text-center p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-none bg-white/80 backdrop-blur-sm group">
-              <div className="bg-gradient-to-br from-cyan-100 to-cyan-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-cyan-600 group-hover:to-cyan-500 transition-all duration-300">
-                <span className="text-2xl font-bold text-cyan-600 group-hover:text-white transition-colors">02</span>
+            <Card className="text-center p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300 border-none bg-white shadow-sm group">
+              <div className="bg-gradient-to-br from-cyan-100 to-cyan-50 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-cyan-600 group-hover:to-cyan-500 transition-all duration-300">
+                <span className="text-xl font-bold text-cyan-600 group-hover:text-white transition-colors">02</span>
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-cyan-600 transition-colors">Cloud Services</h3>
+              <h3 className="text-lg font-bold mb-2 group-hover:text-cyan-600 transition-colors">Cloud Services</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Modern cloud-based applications and seamless migration services for enhanced scalability.
               </p>
             </Card>
 
-            <Card className="text-center p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-none bg-white/80 backdrop-blur-sm group">
-              <div className="bg-gradient-to-br from-purple-100 to-purple-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-purple-600 group-hover:to-purple-500 transition-all duration-300">
-                <span className="text-2xl font-bold text-purple-600 group-hover:text-white transition-colors">03</span>
+            <Card className="text-center p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300 border-none bg-white shadow-sm group">
+              <div className="bg-gradient-to-br from-purple-100 to-purple-50 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-purple-600 group-hover:to-purple-500 transition-all duration-300">
+                <span className="text-xl font-bold text-purple-600 group-hover:text-white transition-colors">03</span>
               </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-purple-600 transition-colors">Machine Learning</h3>
+              <h3 className="text-lg font-bold mb-2 group-hover:text-purple-600 transition-colors">Machine Learning</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 AI-powered solutions and intelligent automation for transformative business processes.
               </p>
@@ -811,16 +769,13 @@ export default function HomePage() {
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-xl overflow-hidden shadow-md w-11/12 mx-auto">
                 <img
                   src="/business-meeting-discussion-planning.png"
                   alt={tabContent[activeTab].title}
                   className="w-full h-auto object-cover"
                 />
               </div>
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-cyan-600/10 rounded-full blur-2xl"></div>
             </div>
 
             <div className="space-y-6">
@@ -919,29 +874,29 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => (
-              <Card key={project.id} className="overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-none bg-white group">
+              <Card key={project.id} className="overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-none bg-white shadow-sm group">
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-center p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                      <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm px-4 py-1">
+                    <div className="text-white text-center p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <h3 className="text-lg font-bold mb-2">{project.title}</h3>
+                      <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm px-3 py-1 text-xs">
                         {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
                       </Badge>
-                      <div className="mt-4">
+                      <div className="mt-3">
                         <Button
                           size="sm"
                           variant="outline"
-                          className="border-white/50 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm"
+                          className="border-white/50 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm text-xs h-8"
                         >
                           View Details
-                          <ArrowRight className="w-4 h-4 ml-2" />
+                          <ArrowRight className="w-3 h-3 ml-1" />
                         </Button>
                       </div>
                     </div>
