@@ -190,7 +190,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-blue-600">Get Your Project Quote</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-blue-600">Get Your Project Quote</DialogTitle>
         </DialogHeader>
 
         <form className="bg-slate-200" onSubmit={(e) => e.preventDefault()}>
@@ -328,8 +328,8 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           {formData.service && formData.timeline && (
             <div className="bg-blue-50 p-4 rounded-lg">
               <div className="flex items-center justify-between">
-                <span className="text-lg font-semibold">Estimated Price:</span>
-                <span className="text-2xl font-bold text-blue-600">${calculatePrice().toLocaleString()}</span>
+                <span className="text-base font-semibold">Estimated Price:</span>
+                <span className="text-xl font-bold text-blue-600">${calculatePrice().toLocaleString()}</span>
               </div>
               <p className="text-sm text-gray-600 mt-1">*Final pricing may vary based on detailed requirements</p>
             </div>
