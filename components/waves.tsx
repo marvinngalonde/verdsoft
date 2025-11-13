@@ -393,7 +393,7 @@ const Waves: React.FC<WavesProps> = ({
           zIndex: 1
         }}
       />
-      <canvas ref={canvasRef} className="block w-full h-full" style={{ position: 'relative', zIndex: 0 }} />
+      <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
 };
