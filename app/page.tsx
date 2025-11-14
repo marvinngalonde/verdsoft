@@ -175,7 +175,7 @@ export default function HomePage() {
       category: "TECHNOLOGY",
       title: "Software Solution",
       description: "Build powerful, scalable software solutions that streamline your business operations and drive growth.",
-      image: "/wodev.png",
+      image: "/software-development-professionals-discussing.png",
       icon: Monitor
     },
     {
@@ -183,7 +183,7 @@ export default function HomePage() {
       category: "SOLUTION",
       title: "Mobile Apps",
       description: "Develop custom mobile applications for iOS and Android platforms tailored to your business needs.",
-      image: "/mob.png",
+      image: "/web-development-team-working-on-laptop.png",
       icon: Phone
     },
     {
@@ -191,7 +191,7 @@ export default function HomePage() {
       category: "EDUCATION",
       title: "IT Training",
       description: "Comprehensive IT training programs designed to upskill your team and enhance their technical expertise.",
-      image: "/maledev.png",
+      image: "/business-team-data-analysis-meeting.png",
       icon: Settings
     },
     {
@@ -199,7 +199,7 @@ export default function HomePage() {
       category: "DEVELOPMENT",
       title: "Custom Software",
       description: "Tailored software solutions built from the ground up to meet the unique demands of your business.",
-      image: "/wo2.png",
+      image: "/modern-office-collaboration.png",
       icon: Monitor
     }
   ]
