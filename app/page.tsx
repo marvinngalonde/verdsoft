@@ -148,22 +148,22 @@ export default function HomePage() {
   }
 
   const portfolioProjects = [
-    { id: 1, category: "business", title: "E-commerce Platform", image: "/it-technology-digital-transformation.png" },
-    { id: 2, category: "design", title: "Corporate Website", image: "/business-team-data-analysis-meeting.png" },
+    { id: 1, category: "business", title: "E-commerce Platform", image: "/images/it-technology-digital-transformation.png" },
+    { id: 2, category: "design", title: "Corporate Website", image: "/images/business-team-data-analysis-meeting.png" },
     {
       id: 3,
       category: "development",
       title: "Mobile Banking App",
-      image: "/web-development-team-working-on-laptop.png",
+      image: "/images/Gemini_Generated_Image_mgell9mgell9mgel.png",
     },
     {
       id: 4,
       category: "technology",
       title: "AI Chatbot System",
-      image: "/software-development-professionals-discussing.png",
+      image: "/images/software-development-professionals-discussing.png",
     },
-    { id: 5, category: "business", title: "CRM Solution", image: "/modern-office-collaboration.png" },
-    { id: 6, category: "idea", title: "IoT Dashboard", image: "/business-meeting-discussion-planning.png" },
+    { id: 5, category: "business", title: "CRM Solution", image: "/images/modern-office-collaboration.png" },
+    { id: 6, category: "idea", title: "IoT Dashboard", image: "/images/business-meeting-discussion-planning.png" },
   ]
 
   const filteredProjects =
@@ -177,7 +177,7 @@ export default function HomePage() {
       category: "TECHNOLOGY",
       title: "Software Solution",
       description: "Build powerful, scalable software solutions that streamline your business operations and drive growth.",
-      image: "/wodev.png",
+      image: "/images/software-development-professionals-discussing.png",
       icon: Monitor
     },
     {
@@ -185,7 +185,7 @@ export default function HomePage() {
       category: "SOLUTION",
       title: "Mobile Apps",
       description: "Develop custom mobile applications for iOS and Android platforms tailored to your business needs.",
-      image: "/mob.png",
+      image: "/images/Gemini_Generated_Image_vi0nomvi0nomvi0n.png",
       icon: Phone
     },
     {
@@ -193,7 +193,7 @@ export default function HomePage() {
       category: "EDUCATION",
       title: "IT Training",
       description: "Comprehensive IT training programs designed to upskill your team and enhance their technical expertise.",
-      image: "/maledev.png",
+      image: "/images/business-team-data-analysis-meeting.png",
       icon: Settings
     },
     {
@@ -201,7 +201,7 @@ export default function HomePage() {
       category: "DEVELOPMENT",
       title: "Custom Software",
       description: "Tailored software solutions built from the ground up to meet the unique demands of your business.",
-      image: "/wo2.png",
+      image: "/images/modern-office-collaboration.png",
       icon: Monitor
     }
   ]
@@ -505,13 +505,13 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative w-[80%] h-[80%]">
-              
+
                 <img
-                  src="/maledev.png"
+                  src="/images/maledev.png"
                   alt="About Company"
                   className="w-[80%] h-[80%]"
                 />
-            
+
             </div>
 
             <div>
@@ -722,7 +722,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <img
-                src="/business-meeting-discussion-planning.png"
+                src="/images/business-meeting-discussion-planning.png"
                 alt={tabContent[activeTab].title}
                 className="w-full rounded-2xl shadow-lg"
               />
