@@ -441,43 +441,44 @@ export default function HomePage() {
       </section>
 
       {/* Consultation Form Section (overlapping hero) */}
-      <section className="relative z-30 flex justify-center w-full -mt-12 pb-3">
+      <section className="relative z-30 flex justify-center w-full -mt-16 pb-8">
         <div
-          className="bg-white rounded-2xl shadow-2xl px-3 py-4 w-full max-w-2xl border border-[#e5eaf2] flex flex-col md:flex-row items-stretch gap-3"
-          style={{ boxShadow: "0 4px 16px 0 rgba(11,30,63,0.10)" }}
+          className="bg-white rounded-3xl shadow-2xl px-6 py-6 w-full max-w-4xl border border-gray-100 flex flex-col md:flex-row items-stretch gap-6 backdrop-blur-sm bg-white/95"
+          style={{ boxShadow: "0 10px 40px 0 rgba(11,30,63,0.15)" }}
         >
-          {/* Left Column: 2 rows */}
-          <div className="flex flex-col justify-center md:w-1/3 w-full gap-1">
-            <div className="text-[10px] text-[#1a3570] font-semibold uppercase tracking-wide">
+          {/* Left Column */}
+          <div className="flex flex-col justify-center md:w-1/3 w-full gap-3">
+            <div className="text-xs text-blue-600 font-bold uppercase tracking-wider">
               GET IN TOUCH
             </div>
-            <h3 className="text-sm md:text-base font-bold text-[#0b1e3f] leading-tight">
-              Make Free Consultation
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">
+              Make Free <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Consultation</span>
             </h3>
+            <p className="text-sm text-gray-600">Connect with our experts today</p>
           </div>
-          {/* Right Column: 2 rows, 3 columns */}
-          <form className="flex-1 flex flex-col gap-2">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+          {/* Right Column */}
+          <form className="flex-1 flex flex-col gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Input
                 placeholder="Your Name"
-                className="rounded-lg bg-[#f6f8fa] border border-[#e5eaf2] h-7 text-xs"
+                className="rounded-xl bg-gray-50 border border-gray-200 h-10 text-sm hover:border-blue-300 focus:border-blue-500 transition-colors"
               />
               <Input
                 placeholder="Email Address"
                 type="email"
-                className="rounded-lg bg-[#f6f8fa] border border-[#e5eaf2] h-7 text-xs"
+                className="rounded-xl bg-gray-50 border border-gray-200 h-10 text-sm hover:border-blue-300 focus:border-blue-500 transition-colors"
               />
               <Input
                 placeholder="Phone"
-                className="rounded-lg bg-[#f6f8fa] border border-[#e5eaf2] h-7 text-xs"
+                className="rounded-xl bg-gray-50 border border-gray-200 h-10 text-sm hover:border-blue-300 focus:border-blue-500 transition-colors"
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Select>
-                <SelectTrigger className="rounded-lg bg-[#f6f8fa] border border-[#e5eaf2] h-7 text-xs">
+                <SelectTrigger className="rounded-xl bg-gray-50 border border-gray-200 h-10 text-sm hover:border-blue-300 focus:border-blue-500 transition-colors">
                   <SelectValue placeholder="Select Service" />
                 </SelectTrigger>
-                <SelectContent className="bg-[#f6f8fa] ">
+                <SelectContent className="bg-white rounded-xl">
                   <SelectItem value="web">Web Development</SelectItem>
                   <SelectItem value="software">Software Development</SelectItem>
                   <SelectItem value="mobile">Mobile Apps</SelectItem>
@@ -487,13 +488,11 @@ export default function HomePage() {
               </Select>
               <Input
                 placeholder="mm/dd/yyyy"
-                className="rounded-lg bg-[#f6f8fa] border border-[#e5eaf2] h-7 text-xs"
+                className="rounded-xl bg-gray-50 border border-gray-200 h-10 text-sm hover:border-blue-300 focus:border-blue-500 transition-colors"
               />
-              <div className="flex items-center">
-                <Button className="w-28 md:w-28 bg-[#0b1e3f] hover:bg-[#1a3570] text-white py-1 px-3 text-xs font-semibold rounded-lg shadow-none h-7">
-                  BOOK
-                </Button>
-              </div>
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-2 px-4 text-sm font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-10">
+                BOOK NOW
+              </Button>
             </div>
           </form>
         </div>
@@ -501,75 +500,95 @@ export default function HomePage() {
 
 
        {/* About Section */}
-      <section id="about" className="py-12 bg-white fade-in-section">
+      <section id="about" className="py-20 bg-gradient-to-b from-white to-gray-50 fade-in-section">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative w-[80%] h-[80%]">
-
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"></div>
+              <div className="relative">
                 <img
                   src="/images/maledev.png"
                   alt="About Company"
-                  className="w-[80%] h-[80%]"
+                  className="w-full h-auto rounded-2xl shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500"
                 />
-
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-4 hidden lg:block">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-blue-100 p-3 rounded-lg">
+                      <Award className="w-6 h-6 text-[#1a237e]" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-[#1a237e]">5+</div>
+                      <div className="text-xs text-gray-600">Years Experience</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>
-              <Badge className="bg-blue-100 text-[#1a237e] border-blue-200 mb-4">ABOUT COMPANY</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Empowering Businesses with Innovative IT Solutions
+              <Badge className="bg-blue-100 text-[#1a237e] border-blue-200 mb-6 text-xs font-semibold px-4 py-2">ABOUT COMPANY</Badge>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Empowering Businesses with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Innovative IT Solutions</span>
               </h2>
-              <p className="text-base text-gray-600 mb-6 leading-relaxed">
-                <span className="text-5xl font-bold text-[#1a237e] float-left mr-3 leading-none">W</span>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                <span className="text-6xl font-bold text-[#1a237e] float-left mr-4 mt-2 leading-none">W</span>
                 e specialize in delivering comprehensive IT services tailored for startups and growing businesses. Our expertise spans web development, mobile app creation, custom software solutions, and advanced AI chatbot integration. With a focus on quality, security, and scalability, we help our clients transform their ideas into impactful digital products.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Settings className="w-5 h-5 text-[#1a237e]" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold mb-1">Web Development</h3>
-                    <p className="text-sm text-gray-600">
-                      Modern, responsive websites built with the latest technologies to ensure your business stands out online.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Cloud className="w-5 h-5 text-[#1a237e]" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold mb-1">Mobile Apps</h3>
-                    <p className="text-sm text-gray-600">
-                      Custom mobile applications for iOS and Android, designed to engage your users and grow your brand.
-                    </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="group hover:bg-blue-50 p-4 rounded-xl transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <Code className="w-6 h-6 text-[#1a237e]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2 text-gray-900">Web Development</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        Modern, responsive websites built with cutting-edge technologies.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Shield className="w-5 h-5 text-[#1a237e]" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold mb-1">Software Development</h3>
-                    <p className="text-sm text-gray-600">
-                      End-to-end software solutions, from concept to deployment, tailored to your unique business needs.
-                    </p>
+                <div className="group hover:bg-blue-50 p-4 rounded-xl transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <Phone className="w-6 h-6 text-[#1a237e]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2 text-gray-900">Mobile Apps</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        Custom mobile applications for iOS and Android platforms.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Settings className="w-5 h-5 text-[#1a237e]" />
+                <div className="group hover:bg-blue-50 p-4 rounded-xl transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <Shield className="w-6 h-6 text-[#1a237e]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2 text-gray-900">Software Development</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        End-to-end software solutions tailored to your business needs.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-base font-bold mb-1">AI Chatbots</h3>
-                    <p className="text-sm text-gray-600">
-                      Intelligent chatbot solutions to automate customer support and enhance user engagement.
-                    </p>
+                </div>
+
+                <div className="group hover:bg-blue-50 p-4 rounded-xl transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <MessageCircle className="w-6 h-6 text-[#1a237e]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2 text-gray-900">AI Chatbots</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        Intelligent automation to enhance customer engagement.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -579,15 +598,18 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-12 bg-gray-100 fade-in-section">
+      <section id="services" className="py-20 bg-gradient-to-b from-gray-50 to-white fade-in-section">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-blue-100 text-[#1a237e] border-blue-200 mb-4">OUR SERVICES</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-16">
+            <Badge className="bg-blue-100 text-[#1a237e] border-blue-200 mb-6 text-xs font-semibold px-4 py-2">OUR SERVICES</Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
               We Deal With The Aspects Of
               <br />
-              Professional IT Services
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Professional IT Services</span>
             </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-4">
+              Comprehensive technology solutions designed to accelerate your business growth
+            </p>
           </div>
 
           <div className="relative">
@@ -597,33 +619,33 @@ export default function HomePage() {
                   const IconComponent = service.icon
                   return (
                     <div key={service.id} className="embla__slide min-w-0 flex-grow-0 flex-shrink-0 basis-full pl-4 md:basis-1/2 lg:basis-1/3">
-                      <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden shadow-lg border-none">
+                      <Card className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-none bg-white h-full hover:-translate-y-2">
                         <CardContent className="p-0">
-                          <div className="relative p-12">
+                          <div className="relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                             <img
                               src={service.image}
                               alt={service.title}
-                              className="w-full h-48 object-fit-cover "
+                              className="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-500"
                             />
-                            <div className="absolute top-3 left-3 bg-white p-2 rounded-lg shadow-lg">
-                              <IconComponent className="w-5 h-5 text-[#1a237e]" />
+                            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                              <IconComponent className="w-6 h-6 text-[#1a237e]" />
                             </div>
                           </div>
-                          <div className="p-4">
-                            <div className="text-xs text-[#1a237e] font-semibold mb-1">{service.category}</div>
-                            <h3 className="text-base font-bold mb-2 group-hover:text-[#1a237e] transition-colors">
+                          <div className="p-6">
+                            <div className="text-xs text-[#1a237e] font-bold mb-2 tracking-wider">{service.category}</div>
+                            <h3 className="text-xl font-bold mb-3 group-hover:text-[#1a237e] transition-colors">
                               {service.title}
                             </h3>
-                            <p className="text-sm text-gray-600 mb-3">
+                            <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                               {service.description}
                             </p>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="rounded-full bg-gray-100 hover:bg-[#1a237e] hover:text-white w-8 h-8"
-                            >
-                              <ArrowRight className="w-3 h-3" />
-                            </Button>
+                            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                              <span className="text-sm font-semibold text-gray-900 group-hover:text-[#1a237e] transition-colors">Learn More</span>
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 group-hover:from-[#1a237e] group-hover:to-blue-700 flex items-center justify-center transition-all duration-300">
+                                <ArrowRight className="w-4 h-4 text-[#1a237e] group-hover:text-white transition-colors" />
+                              </div>
+                            </div>
                           </div>
                         </CardContent>
                       </Card>
@@ -633,11 +655,11 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="embla__dots flex justify-center mt-8 space-x-2">
+            <div className="embla__dots flex justify-center mt-12 space-x-3">
               {scrollSnaps.map((_, index) => (
                 <button
                   key={index}
-                  className={`embla__dot w-3 h-3 rounded-full ${index === selectedIndex ? 'bg-[#1a237e]' : 'bg-gray-300'}`}
+                  className={`embla__dot h-2 rounded-full transition-all duration-300 ${index === selectedIndex ? 'bg-[#1a237e] w-8' : 'bg-gray-300 w-2 hover:bg-gray-400'}`}
                   onClick={() => emblaApi && emblaApi.scrollTo(index)}
                 />
               ))}
@@ -649,70 +671,77 @@ export default function HomePage() {
      
 
       {/* Services Grid Section */}
-      <section className="py-12 bg-gray-50 fade-in-section">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 fade-in-section">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-6 mb-12">
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="bg-gray-100 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-gray-600">01</span>
+          <div className="grid lg:grid-cols-3 gap-8">
+            <Card className="group text-center p-8 hover:shadow-2xl transition-all duration-500 border-none bg-white hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="bg-gradient-to-br from-blue-100 to-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl font-bold text-[#1a237e]">01</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#1a237e] transition-colors">IT Management</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Bring To The Table Win-win Survival Strategies To Ensure Proactive Domination.
+                </p>
               </div>
-              <h3 className="text-base font-bold mb-2">IT Management</h3>
-              <p className="text-sm text-gray-600">
-                Bring To The Table Win-win Survival Strategies To Ensure Proactive Domination.
-              </p>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="bg-gray-100 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-gray-600">02</span>
+            <Card className="group text-center p-8 hover:shadow-2xl transition-all duration-500 border-none bg-white hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="bg-gradient-to-br from-blue-100 to-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl font-bold text-[#1a237e]">02</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#1a237e] transition-colors">Cloud Services</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Modern cloud-based applications and migration services for enhanced scalability.
+                </p>
               </div>
-              <h3 className="text-base font-bold mb-2">Cloud Services</h3>
-              <p className="text-sm text-gray-600">
-                Modern cloud-based applications and migration services for enhanced scalability.
-              </p>
             </Card>
 
-            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-              <div className="bg-gray-100 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-gray-600">03</span>
+            <Card className="group text-center p-8 hover:shadow-2xl transition-all duration-500 border-none bg-white hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <div className="bg-gradient-to-br from-blue-100 to-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl font-bold text-[#1a237e]">03</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#1a237e] transition-colors">Machine Learning</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  AI-powered solutions and intelligent automation for modern business processes.
+                </p>
               </div>
-              <h3 className="text-base font-bold mb-2">Machine Learning</h3>
-              <p className="text-sm text-gray-600">
-                AI-powered solutions and intelligent automation for modern business processes.
-              </p>
             </Card>
           </div>
-
-          
         </div>
       </section>
 
       {/* Mission/Vision Section */}
-      <section id="mission" className="py-12 bg-white fade-in-section">
+      <section id="mission" className="py-20 bg-gradient-to-b from-white to-gray-50 fade-in-section">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-center mb-8">
-            <div className="flex bg-gray-100 rounded-full p-1">
+          <div className="flex justify-center mb-16">
+            <div className="flex flex-wrap bg-white rounded-2xl p-2 shadow-xl border border-gray-100">
               <Button
                 onClick={() => setActiveTab("mission")}
-                className={`rounded-full px-8 ${activeTab === "mission" ? "bg-[#1a237e] text-white" : "bg-transparent text-gray-600"}`}
+                className={`rounded-xl px-6 py-3 transition-all duration-300 font-semibold ${activeTab === "mission" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-50"}`}
               >
                 Our Mission
               </Button>
               <Button
                 onClick={() => setActiveTab("vision")}
-                className={`rounded-full px-8 ${activeTab === "vision" ? "bg-[#1a237e] text-white" : "bg-transparent text-gray-600"}`}
+                className={`rounded-xl px-6 py-3 transition-all duration-300 font-semibold ${activeTab === "vision" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-50"}`}
               >
                 Our Vision
               </Button>
               <Button
                 onClick={() => setActiveTab("services")}
-                className={`rounded-full px-8 ${activeTab === "services" ? "bg-[#1a237e] text-white" : "bg-transparent text-gray-600"}`}
+                className={`rounded-xl px-6 py-3 transition-all duration-300 font-semibold ${activeTab === "services" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-50"}`}
               >
                 IT Services
               </Button>
               <Button
                 onClick={() => setActiveTab("history")}
-                className={`rounded-full px-8 ${activeTab === "history" ? "bg-[#1a237e] text-white" : "bg-transparent text-gray-600"}`}
+                className={`rounded-xl px-6 py-3 transition-all duration-300 font-semibold ${activeTab === "history" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-50"}`}
               >
                 History
               </Button>
@@ -720,25 +749,30 @@ export default function HomePage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <img
-                src="/images/business-meeting-discussion-planning.png"
-                alt={tabContent[activeTab].title}
-                className="w-full rounded-2xl shadow-lg"
-              />
+            <div className="relative group order-2 lg:order-1">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"></div>
+              <div className="relative">
+                <img
+                  src="/images/business-meeting-discussion-planning.png"
+                  alt={tabContent[activeTab].title}
+                  className="w-full rounded-2xl shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{tabContent[activeTab].title}</h2>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed">{tabContent[activeTab].description}</p>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                {tabContent[activeTab].title}
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">{tabContent[activeTab].description}</p>
 
-              <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {tabContent[activeTab].features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-[#1a237e] rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs">✓</span>
+                  <div key={index} className="flex items-center gap-3 group/item">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300">
+                      <span className="text-[#1a237e] text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-[#1a237e] transition-colors">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -748,81 +782,91 @@ export default function HomePage() {
       </section>
 
          {/* Portfolio Section */}
-         <section id="portfolio" className="py-12 bg-gray-50 fade-in-section">
+         <section id="portfolio" className="py-20 bg-gradient-to-b from-gray-50 to-white fade-in-section">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-blue-100 text-[#1a237e] border-blue-200 mb-4">FEATURED PROJECTS</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Showcase Of Our Recognized Work</h2>
+          <div className="text-center mb-16">
+            <Badge className="bg-blue-100 text-[#1a237e] border-blue-200 mb-6 text-xs font-semibold px-4 py-2">FEATURED PROJECTS</Badge>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              Showcase Of Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Recognized Work</span>
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-4">
+              Explore our portfolio of successful projects and digital transformations
+            </p>
           </div>
 
-          <div className="flex justify-center mb-8">
-            <div className="flex flex-wrap gap-2 text-sm">
+          <div className="flex justify-center mb-12">
+            <div className="flex flex-wrap gap-3 text-sm bg-white rounded-2xl p-2 shadow-lg">
               <Button
                 onClick={() => setActiveFilter("all")}
-                className={
-                  activeFilter === "all" ? "bg-[#1a237e] text-white" : "bg-white text-gray-600 hover:bg-gray-100"
-                }
+                className={`rounded-xl px-6 py-2 transition-all duration-300 ${
+                  activeFilter === "all" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-100"
+                }`}
               >
                 All
               </Button>
               <Button
                 onClick={() => setActiveFilter("business")}
-                className={
-                  activeFilter === "business" ? "bg-[#1a237e] text-white" : "bg-white text-gray-600 hover:bg-gray-100"
-                }
+                className={`rounded-xl px-6 py-2 transition-all duration-300 ${
+                  activeFilter === "business" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-100"
+                }`}
               >
                 Business
               </Button>
               <Button
                 onClick={() => setActiveFilter("design")}
-                className={
-                  activeFilter === "design" ? "bg-[#1a237e] text-white" : "bg-white text-gray-600 hover:bg-gray-100"
-                }
+                className={`rounded-xl px-6 py-2 transition-all duration-300 ${
+                  activeFilter === "design" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-100"
+                }`}
               >
                 Design
               </Button>
               <Button
                 onClick={() => setActiveFilter("development")}
-                className={
-                  activeFilter === "development" ? "bg-[#1a237e] text-white" : "bg-white text-gray-600 hover:bg-gray-100"
-                }
+                className={`rounded-xl px-6 py-2 transition-all duration-300 ${
+                  activeFilter === "development" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-100"
+                }`}
               >
                 Development
               </Button>
               <Button
                 onClick={() => setActiveFilter("idea")}
-                className={
-                  activeFilter === "idea" ? "bg-[#1a237e] text-white" : "bg-white text-gray-600 hover:bg-gray-100"
-                }
+                className={`rounded-xl px-6 py-2 transition-all duration-300 ${
+                  activeFilter === "idea" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-100"
+                }`}
               >
                 Idea
               </Button>
               <Button
                 onClick={() => setActiveFilter("technology")}
-                className={
-                  activeFilter === "technology" ? "bg-[#1a237e] text-white" : "bg-white text-gray-600 hover:bg-gray-100"
-                }
+                className={`rounded-xl px-6 py-2 transition-all duration-300 ${
+                  activeFilter === "technology" ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" : "bg-transparent text-gray-600 hover:bg-gray-100"
+                }`}
               >
                 Technology
               </Button>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
-              <Card key={project.id} className="overflow-hidden hover:shadow-xl transition-shadow group">
-                <div className="relative">
+              <Card key={project.id} className="overflow-hidden hover:shadow-2xl transition-all duration-500 group border-none bg-white hover:-translate-y-2">
+                <div className="relative overflow-hidden">
                   <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-[#1a237e]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <h3 className="text-base font-bold mb-2">{project.title}</h3>
-                      <Badge className="bg-white/20 text-white border-white/30">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a237e]/95 via-[#1a237e]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6">
+                    <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                      <Badge className="bg-white/20 backdrop-blur-sm text-white border-white/30 px-4 py-1">
                         {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
                       </Badge>
+                      <div className="mt-4 flex items-center justify-center gap-2">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
+                          <ArrowRight className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -833,78 +877,84 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-12 bg-[#1a237e] text-white fade-in-section">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section id="contact" className="py-20 bg-gradient-to-br from-[#1a237e] via-blue-900 to-indigo-900 text-white fade-in-section relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-4">Get Amazing Services</h2>
-              <p className="text-sm text-blue-100 mb-6 leading-relaxed">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">Amazing Services</span>
+              </h2>
+              <p className="text-lg text-blue-100 mb-10 leading-relaxed">
                 Ready to transform your business with cutting-edge technology? Our expert team is standing by to discuss
                 your project and provide instant solutions.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="bg-black/20 p-2 rounded-full">
-                    <Shield className="w-5 h-5" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold mb-1">High Security</h3>
-                    <p className="text-sm text-blue-100">
-                      We provide IT design for companies and businesses worldwide which don't look even slightly
-                      believable.
+                    <h3 className="text-xl font-bold mb-2">High Security</h3>
+                    <p className="text-base text-blue-100 leading-relaxed">
+                      Enterprise-grade security protocols ensuring your data and systems remain protected at all times.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="bg-black/20 p-2 rounded-full">
-                    <Award className="w-5 h-5" />
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <Award className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold mb-1">Quality Control</h3>
-                    <p className="text-sm text-blue-100">
-                      We provide IT design for companies and businesses worldwide which don't look even slightly
-                      believable.
+                    <h3 className="text-xl font-bold mb-2">Quality Control</h3>
+                    <p className="text-base text-blue-100 leading-relaxed">
+                      Rigorous testing and quality assurance processes to deliver exceptional results every time.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="bg-black/20 p-2 rounded-full">
-                    <Clock className="w-5 h-5" />
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold mb-1">24/7 Support</h3>
-                    <p className="text-sm text-blue-100">
-                      We provide IT design for companies and businesses worldwide which don't look even slightly
-                      believable.
+                    <h3 className="text-xl font-bold mb-2">24/7 Support</h3>
+                    <p className="text-base text-blue-100 leading-relaxed">
+                      Round-the-clock technical support to ensure your business never misses a beat.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 text-gray-900">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="bg-[#1a237e] p-1.5 rounded-lg">
-                  <Mail className="w-4 h-4 text-white" />
+            <div className="bg-white rounded-3xl p-8 text-gray-900 shadow-2xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-xl">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-xs text-[#1a237e] font-semibold">GET IN TOUCH</div>
+                <div>
+                  <div className="text-xs text-blue-600 font-bold uppercase tracking-wider">GET IN TOUCH</div>
+                  <h3 className="text-2xl font-bold">Contact Us</h3>
+                </div>
               </div>
-              <h3 className="text-lg font-bold mb-3">You Have Questions? Contact With Us</h3>
-              <form className="space-y-3">
-                <div className="grid grid-cols-2 gap-3">
-                  <Input placeholder="Your Name" className="border-gray-300" />
-                  <Input placeholder="Email Address" type="email" className="border-gray-300" />
+              <p className="text-gray-600 mb-6">Have questions? We're here to help!</p>
+              <form className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <Input placeholder="Your Name" className="rounded-xl border-gray-200 bg-gray-50 hover:border-blue-300 focus:border-blue-500 transition-colors h-12" />
+                  <Input placeholder="Email Address" type="email" className="rounded-xl border-gray-200 bg-gray-50 hover:border-blue-300 focus:border-blue-500 transition-colors h-12" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <Input placeholder="Phone" className="border-gray-300" />
+                  <Input placeholder="Phone" className="rounded-xl border-gray-200 bg-gray-50 hover:border-blue-300 focus:border-blue-500 transition-colors h-12" />
                   <Select>
-                    <SelectTrigger className="border-gray-300">
+                    <SelectTrigger className="rounded-xl border-gray-200 bg-gray-50 hover:border-blue-300 focus:border-blue-500 transition-colors h-12">
                       <SelectValue placeholder="Select Service" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="rounded-xl">
                       <SelectItem value="web">Web Development</SelectItem>
                       <SelectItem value="software">Software Development</SelectItem>
                       <SelectItem value="mobile">Mobile Apps</SelectItem>
@@ -913,8 +963,10 @@ export default function HomePage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <Textarea placeholder="Type Your Message" className="border-gray-300 min-h-[80px] text-sm" />
-                <Button className="w-full bg-[#1a237e] hover:bg-blue-700 text-white py-2 text-sm">SUBMIT NOW</Button>
+                <Textarea placeholder="Type Your Message" className="rounded-xl border-gray-200 bg-gray-50 hover:border-blue-300 focus:border-blue-500 transition-colors min-h-[100px]" />
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-12">
+                  SUBMIT NOW
+                </Button>
               </form>
             </div>
           </div>
