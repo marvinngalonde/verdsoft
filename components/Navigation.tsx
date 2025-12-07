@@ -1,51 +1,83 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Navigation() {
     const pathname = usePathname();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
+        { name: 'Home', href: '/' },
         { name: 'Services', href: '/services' },
         { name: 'Our Work', href: '/work' },
-        { name: 'Consultation', href: '/services' },
-        { name: 'Training', href: '/services' },
+        { name: 'Consultation', href: '/consultation' },
+        { name: 'Training', href: '/training' },
         { name: 'About Us', href: '/about' },
         { name: 'Contact', href: '/contact' }
     ];
 
     return (
-        <nav style={{ background: 'var(--navy-dark)', position: 'sticky', top: 0, zIndex: 1000 }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.25rem 2rem' }}>
-                <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'var(--orange-accent)', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5" />
-                            <path d="M2 12l10 5 10-5" />
-                        </svg>
-                    </div>
-                    <span style={{ color: 'white', fontSize: '1.5rem', fontWeight: '700' }}>Nexus<br />Solutions</span>
+        <nav style={{
+            position: 'absolute', // Sits on top of the hero image
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000,
+            background: 'transparent',
+            padding: '1.5rem 0'
+        }}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
+                {/* Logo with Filter for Dark Background */}
+                <Link href="/" style={{ position: 'relative', width: '180px', height: '50px', display: 'block' }}>
+                    <Image
+                        src="/logo.png"
+                        alt="VERDSOFT"
+                        fill
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'left',
+                            // Turns the dark blue logo pure white to match the design
+                            filter: 'brightness(0) invert(1)'
+                        }}
+                        priority
+                    />
                 </Link>
-                <ul style={{ display: 'flex', gap: '2.5rem', listStyle: 'none', margin: 0 }}>
+
+                {/* Desktop Links */}
+                <ul className="hidden md:flex" style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, alignItems: 'center' }}>
                     {navItems.map((item) => (
                         <li key={item.name}>
                             <Link
                                 href={item.href}
                                 style={{
-                                    color: pathname === item.href ? 'var(--orange-accent)' : 'white',
+                                    color: 'rgba(255,255,255,0.9)',
                                     textDecoration: 'none',
-                                    fontSize: '0.95rem',
+                                    fontSize: '1rem',
                                     fontWeight: '500',
-                                    transition: 'color 0.3s'
+                                    transition: 'color 0.3s',
+                                    textShadow: '0 2px 4px rgba(0,0,0,0.5)' // Added shadow for better readability over images
                                 }}
-                                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--orange-accent)'}
-                                onMouseLeave={(e) => e.currentTarget.style.color = pathname === item.href ? 'var(--orange-accent)' : 'white'}
+                                onMouseEnter={(e) => e.currentTarget.style.color = 'white'}
+                                onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.9)'}
                             >
                                 {item.name}
                             </Link>
                         </li>
                     ))}
                 </ul>
+
+                {/* Mobile Toggle */}
+                <button
+                    className="md:hidden"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}
+                >
+                    ☰
+                </button>
             </div>
         </nav>
     );
