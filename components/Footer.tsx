@@ -1,83 +1,259 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+// Background "Digital Lines" Pattern Component
+const CircuitBackground = () => (
+    <div style={{
+        position: 'absolute',
+        inset: 0,
+        opacity: 0.1,
+        pointerEvents: 'none',
+        zIndex: 0,
+        overflow: 'hidden'
+    }}>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            {/* Random Tech Lines */}
+            <path d="M0 50 H 200 V 150 H 500" stroke="#06b6d4" strokeWidth="1" fill="none" opacity="0.5" />
+            <path d="M100 300 H 300 V 200 H 600" stroke="#dca585" strokeWidth="1" fill="none" opacity="0.5" />
+            <path d="M800 50 V 100 H 600" stroke="#06b6d4" strokeWidth="1" fill="none" opacity="0.5" />
+            <circle cx="200" cy="150" r="2" fill="#06b6d4" />
+            <circle cx="300" cy="200" r="2" fill="#dca585" />
+        </svg>
+        {/* Soft Radial Glow from bottom right */}
+        <div style={{
+            position: 'absolute',
+            bottom: '-20%',
+            right: '-10%',
+            width: '600px',
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)',
+        }}></div>
+    </div>
+);
+
+const SocialIcon = ({ path }) => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d={path} />
+    </svg>
+);
+
 export default function Footer() {
     return (
-        <footer style={{ background: 'var(--navy-dark)', color: 'white', padding: '3rem 0 1.5rem' }}>
-            <div className="container">
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', marginBottom: '2rem' }}>
+        <footer style={{ 
+            background: '#020617', // Very Dark Slate/Navy
+            color: 'white', 
+            position: 'relative',
+            borderTop: '1px solid rgba(255,255,255,0.05)'
+        }}>
+            {/* Top Glowing Line */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent 0%, #06b6d4 50%, transparent 100%)',
+                opacity: 0.5
+            }}></div>
+
+            <CircuitBackground />
+
+            <div className="container" style={{ position: 'relative', zIndex: 1, padding: '4rem 1rem 2rem' }}>
+                <div style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+                    gap: '4rem', 
+                    marginBottom: '4rem' 
+                }}>
+                    
+                    {/* COLUMN 1: BRAND INFO */}
                     <div>
-                        <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: '1.25rem' }}>Contact</h3>
-                        <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8' }}>
-                            📧 info@nexus.com<br />
-                            📞 +9999 999 9999<br />
-                            📍 +99 999 9999999<br />
-                            📍 123 Main Street
+                        {/* Logo */}
+                        <div style={{ position: 'relative', width: '160px', height: '50px', marginBottom: '1.5rem' }}>
+                             <Image 
+                                src="/logo.png" 
+                                alt="Verdsoft" 
+                                fill
+                                style={{ 
+                                    objectFit: 'contain',
+                                    objectPosition: 'left',
+                                    filter: 'brightness(0) invert(1)' 
+                                }} 
+                            />
+                        </div>
+                        <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                            Architecting the digital future with bespoke software solutions, secure hosting, and strategic IT consultation.
                         </p>
                     </div>
 
+                    {/* COLUMN 2: QUICK LINKS */}
                     <div>
-                        <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: '1.25rem' }}>Quick Links</h3>
-                        <ul style={{ listStyle: 'none', padding: 0 }}>
+                        <h3 style={{ color: 'white', marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: '600' }}>Quick Links</h3>
+                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             {['Home', 'Our Work', 'Services', 'Training'].map((link) => (
-                                <li key={link} style={{ marginBottom: '0.5rem' }}>
-                                    <a href="#" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }}
-                                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--orange-accent)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}>
-                                        {link}
-                                    </a>
+                                <li key={link}>
+                                    <Link href="#" style={{ 
+                                        color: '#cbd5e1', 
+                                        textDecoration: 'none', 
+                                        fontSize: '0.95rem', 
+                                        transition: 'color 0.2s',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px'
+                                    }}
+                                    onMouseEnter={(e) => { e.currentTarget.style.color = '#06b6d4'; e.currentTarget.style.paddingLeft = '5px'; }}
+                                    onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.paddingLeft = '0px'; }}
+                                    >
+                                        <span style={{ fontSize: '0.7rem', color: '#06b6d4' }}>›</span> {link}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
+                    {/* COLUMN 3: CONTACT INFO (UPDATED) */}
                     <div>
-                        <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: '1.25rem' }}>Social Media</h3>
-                        <div style={{ display: 'flex', gap: '1rem' }}>
-                            {['📘', '🐦', '💼'].map((icon, idx) => (
-                                <a key={idx} href="#" style={{
-                                    width: '40px',
-                                    height: '40px',
-                                    borderRadius: '50%',
-                                    background: 'rgba(255,255,255,0.1)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '1.25rem',
-                                    transition: 'all 0.3s'
-                                }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--orange-accent)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>
-                                    {icon}
-                                </a>
-                            ))}
+                        <h3 style={{ color: 'white', marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: '600' }}>Contact Us</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                            
+                            {/* Email */}
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                <div style={{ color: '#06b6d4', marginTop: '2px' }}>
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '2px' }}>Email Support</div>
+                                    <a href="mailto:sales@verdsoft.co.zw" style={{ color: 'white', textDecoration: 'none', fontSize: '0.95rem' }}>
+                                        sales@verdsoft.co.zw
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Phone */}
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                <div style={{ color: '#06b6d4', marginTop: '2px' }}>
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '2px' }}>Call Us</div>
+                                    <a href="tel:+263787062575" style={{ color: 'white', textDecoration: 'none', fontSize: '0.95rem' }}>
+                                        +263 787 062 575
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Address (Optional Placeholder) */}
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                <div style={{ color: '#06b6d4', marginTop: '2px' }}>
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                </div>
+                                <span style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>Harare, Zimbabwe</span>
+                            </div>
+
                         </div>
                     </div>
 
+                    {/* COLUMN 4: NEWSLETTER & SOCIAL */}
                     <div>
-                        <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: '1.25rem' }}>Stay Connected with Nexus</h3>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                        <h3 style={{ color: 'white', marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: '600' }}>Stay Connected</h3>
+                        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem' }}>
                             <input
                                 type="email"
                                 placeholder="Enter your email"
                                 style={{
                                     flex: 1,
-                                    padding: '0.75rem',
-                                    borderRadius: '0.375rem',
-                                    border: 'none',
-                                    fontSize: '0.95rem'
+                                    padding: '0.75rem 1rem',
+                                    borderRadius: '0.5rem',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    background: 'rgba(255,255,255,0.05)',
+                                    color: 'white',
+                                    fontSize: '0.95rem',
+                                    outline: 'none',
+                                    backdropFilter: 'blur(5px)'
                                 }}
+                                onFocus={(e) => e.target.style.borderColor = '#06b6d4'}
+                                onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
                             />
-                            <button className="btn-primary" style={{ padding: '0.75rem 1.5rem' }}>→</button>
+                            <button style={{ 
+                                padding: '0.75rem 1.25rem',
+                                background: '#06b6d4',
+                                border: 'none',
+                                borderRadius: '0.5rem',
+                                color: 'white',
+                                cursor: 'pointer',
+                                transition: 'background 0.3s'
+                            }}
+                            onMouseEnter={(e) => e.target.style.background = '#0891b2'}
+                            onMouseLeave={(e) => e.target.style.background = '#06b6d4'}
+                            >
+                                →
+                            </button>
+                        </div>
+
+                        {/* Social Icons (SVGs) */}
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            {/* Facebook */}
+                            <a href="https://www.facebook.com/profile.php?id=61563006754910" className="social-icon" style={socialIconStyle}>
+                                <SocialIcon path="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </a>
+                            {/* Twitter/X */}
+                            <a href="#" className="social-icon" style={socialIconStyle}>
+                                <SocialIcon path="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </a>
+                            {/* LinkedIn */}
+                            <a href="https://www.linkedin.com/company/verdsoft-private-limited/" className="social-icon" style={socialIconStyle}>
+                                <SocialIcon path="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                            </a>
+                             {/* Instagram */}
+                             <a href="#" className="social-icon" style={socialIconStyle}>
+                                <SocialIcon path="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2z" />
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', textAlign: 'center' }}>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem' }}>
-                        Copyright 2024 Nexus Solutions
-                        <span style={{ margin: '0 1rem' }}>|</span>
-                        <a href="#" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>Privacy</a>
-                    </p>
+                {/* COPYRIGHT */}
+                <div style={{ 
+                    borderTop: '1px solid rgba(255,255,255,0.05)', 
+                    paddingTop: '2rem', 
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    gap: '1rem',
+                    color: '#64748b',
+                    fontSize: '0.875rem'
+                }}>
+                    <div>© {new Date().getFullYear()} Verdsoft. All rights reserved.</div>
+                    <div style={{ display: 'flex', gap: '2rem' }}>
+                        <Link href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Privacy Policy</Link>
+                        <Link href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Terms of Service</Link>
+                    </div>
                 </div>
             </div>
         </footer>
     );
 }
+
+const socialIconStyle = {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    background: 'rgba(255,255,255,0.05)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#cbd5e1',
+    textDecoration: 'none',
+    transition: 'all 0.3s ease',
+    border: '1px solid rgba(255,255,255,0.05)'
+};

@@ -13,8 +13,7 @@ export default function Navigation() {
         { name: 'Home', href: '/' },
         { name: 'Services', href: '/services' },
         { name: 'Our Work', href: '/work' },
-        { name: 'Consultation', href: '/consultation' },
-        { name: 'Training', href: '/training' },
+
         { name: 'About Us', href: '/about' },
         { name: 'Contact', href: '/contact' }
     ];

@@ -1,8 +1,8 @@
 export default function ClientVoices() {
     const testimonials = [
-        { name: 'John Elmer', role: 'CEO, TechStart', quote: 'I can be more complete, easy which was a key about structure and very friendly to use.' },
-        { name: 'Diana Weiss', role: 'Product Manager', quote: 'Genuinely simple, interesting and straightforward, very friendly to use.' },
-        { name: 'Aryn Billons', role: 'Founder, InnovateCo', quote: 'I don\'t feel our core is a minimalistic UX is excellent, and we\'re happy with the operating services.' }
+        { name: 'Tafadzwa Muvezwa', role: 'CEO, Neocentric Interiors', quote: 'I truly appreciate the quality of your web designs, particulary as demonstrated in the one of my company.' },
+        { name: 'Dionne Chiwa', role: 'Operations Manager, Royals Heaven Resort', quote: 'The website you made was genuinely amazing, interesting and self speaking to users. Thank you' },
+        { name: 'Brian Choga', role: 'Communications,Kp3 SDA Church', quote: 'Your designs and products are quality and affordable, we really apprecaite your good work.' }
     ];
 
     return (

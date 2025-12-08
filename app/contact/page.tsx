@@ -3,244 +3,229 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import PageHero from '@/components/PageHero';
+
+// --- REUSABLE BACKGROUND COMPONENT (For Header Consistency) ---
+const CircuitBackground = ({ opacity = 0.15 }) => (
+    <div style={{
+        position: 'absolute',
+        inset: 0,
+        opacity: opacity,
+        pointerEvents: 'none',
+        zIndex: 0,
+        overflow: 'hidden'
+    }}>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid-hero" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-hero)" />
+            {/* Tech Lines */}
+            <path d="M0 50 H 200 V 150 H 600" stroke="#06b6d4" strokeWidth="1" fill="none" opacity="0.6" />
+            <path d="M100 300 H 400 V 100 H 800" stroke="#dca585" strokeWidth="1" fill="none" opacity="0.6" />
+            <path d="M900 50 V 250 H 500" stroke="#06b6d4" strokeWidth="1" fill="none" opacity="0.6" />
+            <circle cx="200" cy="150" r="2.5" fill="#06b6d4" />
+            <circle cx="400" cy="100" r="2.5" fill="#dca585" />
+        </svg>
+        <div style={{
+            position: 'absolute',
+            top: '-30%',
+            left: '-10%',
+            width: '800px',
+            height: '800px',
+            background: 'radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%)',
+        }}></div>
+    </div>
+);
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         message: ''
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
+        alert('Thank you for your message!');
     };
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen" style={{ background: '#f8fafc' }}>
             <Navigation />
 
-            <PageHero
-                title="Contact"
-                subtitle="A place to connect with us. We're here to help and answer any questions you may have."
-            />
+            {/* --- HERO SECTION --- */}
+            <section style={{
+                background: '#020617',
+                color: 'white',
+                padding: '8rem 0 16rem', // Extra bottom padding to allow map overlap
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden'
+            }}>
+                <CircuitBackground />
+                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                    <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1rem' }}>Contact</h1>
+                    <p style={{ maxWidth: '600px', margin: '0 auto', color: '#94a3b8', fontSize: '1.1rem' }}>
+                        A great relationship starts with a simple conversation. Let's create something amazing together.
+                    </p>
+                </div>
+            </section>
 
-            {/* Contact Section */}
-            <section className="section-padding light-gradient">
-                <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
-                        {/* Contact Form */}
-                        <div style={{ background: 'white', borderRadius: '1rem', padding: '3rem', boxShadow: '0 10px 40px rgba(0,0,0,0.1)' }}>
-                            <h2 style={{ marginBottom: '2rem' }}>Contact</h2>
+            {/* --- MAP & FORM OVERLAY SECTION --- */}
+            <div style={{ position: 'relative', marginTop: '-10rem', paddingBottom: '0' }}>
 
-                            <form onSubmit={handleSubmit}>
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--text-dark)' }}>
-                                        Name
-                                    </label>
+                {/* 1. BACKGROUND MAP (Full Width) */}
+                <div style={{
+                    width: '100%',
+                    height: '800px', // Tall enough to hold the form
+                    position: 'relative',
+                    background: '#e2e8f0', // Fallback color
+                    overflow: 'hidden'
+                }}>
+                    {/* Placeholder for Google Map - styling to match image */}
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.597654763!2d31.0!3d-17.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQ4JzAwLjAiUyAzMcKwMDAnMDAuMCJF!5e0!3m2!1sen!2szw!4v1600000000000!5m2!1sen!2szw"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1)' }}
+                        allowFullScreen=""
+                        loading="lazy"
+                    ></iframe>
+                </div>
+
+                {/* 2. FLOATING FORM CARD */}
+                <div className="container" style={{
+                    position: 'absolute',
+                    top: '0',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '100%',
+                    maxWidth: '1200px', // Match site width
+                    pointerEvents: 'none' // Let clicks pass through to map on sides
+                }}>
+                    <div style={{
+                        width: '100%',
+                        maxWidth: '550px', // Width of the form card
+                        background: '#1e293b', // Dark Navy Background
+                        borderRadius: '1.5rem',
+                        padding: '3rem',
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        pointerEvents: 'auto', // Re-enable clicks for form
+                        position: 'relative',
+                        top: '50px' // Push down slightly into map area
+                    }}>
+                        <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '2rem' }}>Contact</h2>
+
+                        <form onSubmit={handleSubmit}>
+                            {/* Name Row */}
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.5rem', color: '#cbd5e1' }}>Name</label>
+                                <input
+                                    type="text"
+                                    placeholder="First name"
+                                    value={formData.firstName}
+                                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                                    style={inputStyle}
+                                />
+                            </div>
+
+                            {/* Email & Phone Row */}
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                <div>
+                                    <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.5rem', color: '#cbd5e1' }}>Email</label>
+                                    <input
+                                        type="email"
+                                        placeholder="demoname@gmail.com"
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        style={inputStyle}
+                                    />
+                                </div>
+                                <div>
+                                    <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.5rem', color: '#cbd5e1' }}>Last Name</label>
                                     <input
                                         type="text"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.875rem',
-                                            borderRadius: '0.375rem',
-                                            border: '2px solid var(--gray-light)',
-                                            fontSize: '1rem',
-                                            outline: 'none'
-                                        }}
-                                        required
+                                        placeholder="Your last name"
+                                        value={formData.lastName}
+                                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                                        style={inputStyle}
                                     />
                                 </div>
-
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-                                    <div>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--text-dark)' }}>
-                                            Email
-                                        </label>
-                                        <input
-                                            type="email"
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            style={{
-                                                width: '100%',
-                                                padding: '0.875rem',
-                                                borderRadius: '0.375rem',
-                                                border: '2px solid var(--gray-light)',
-                                                fontSize: '1rem',
-                                                outline: 'none'
-                                            }}
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--text-dark)' }}>
-                                            Phone
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            style={{
-                                                width: '100%',
-                                                padding: '0.875rem',
-                                                borderRadius: '0.375rem',
-                                                border: '2px solid var(--gray-light)',
-                                                fontSize: '1rem',
-                                                outline: 'none'
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div style={{ marginBottom: '2rem' }}>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--text-dark)' }}>
-                                        Message
-                                    </label>
-                                    <textarea
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        rows={5}
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.875rem',
-                                            borderRadius: '0.375rem',
-                                            border: '2px solid var(--gray-light)',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            resize: 'vertical'
-                                        }}
-                                        required
-                                    />
-                                </div>
-
-                                <button type="submit" className="btn-primary" style={{ width: '100%', padding: '1rem' }}>
-                                    Send
-                                </button>
-                            </form>
-                        </div>
-
-                        {/* Contact Info & Map */}
-                        <div>
-                            {/* Contact Information */}
-                            <div style={{ background: 'white', borderRadius: '1rem', padding: '2.5rem', marginBottom: '2rem', boxShadow: '0 10px 40px rgba(0,0,0,0.1)' }}>
-                                <h3 style={{ marginBottom: '1.5rem' }}>Contact</h3>
-                                <div style={{ color: 'var(--text-light)', lineHeight: '2' }}>
-                                    <p>📧 info@nexussolutions.com</p>
-                                    <p>📞 +9999 999 9999</p>
-                                    <p>📍 +99 999 9999999</p>
-                                    <p>🕐 Monday-Fri 9AM-5PM</p>
-                                </div>
                             </div>
 
-                            {/* Map */}
-                            <div style={{
-                                background: 'white',
-                                borderRadius: '1rem',
-                                overflow: 'hidden',
-                                boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
-                                height: '400px',
-                                position: 'relative'
-                            }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    background: 'linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '4rem'
-                                }}>
-                                    📍
-                                </div>
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: '1rem',
-                                    left: '1rem',
-                                    right: '1rem',
-                                    background: 'white',
-                                    padding: '1rem',
-                                    borderRadius: '0.5rem',
-                                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                                }}>
-                                    <p style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Nexus Solutions HQ</p>
-                                    <p style={{ fontSize: '0.875rem', color: 'var(--text-light)' }}>123 Main Street, Tech City</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Additional Info Section */}
-            <section className="section-padding" style={{ background: 'white' }}>
-                <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem', textAlign: 'center' }}>
-                        <div>
-                            <h3 style={{ marginBottom: '1rem' }}>Social Media</h3>
-                            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                                {['📘', '🐦', '💼'].map((icon, idx) => (
-                                    <a key={idx} href="#" style={{
-                                        width: '50px',
-                                        height: '50px',
-                                        borderRadius: '50%',
-                                        background: 'var(--gray-light)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontSize: '1.5rem',
-                                        transition: 'all 0.3s',
-                                        textDecoration: 'none'
-                                    }}
-                                        onMouseEnter={(e) => e.currentTarget.style.background = 'var(--orange-accent)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.background = 'var(--gray-light)'}>
-                                        {icon}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 style={{ marginBottom: '1rem' }}>Quick Links</h3>
-                            <ul style={{ listStyle: 'none', padding: 0 }}>
-                                {['Home', 'Services', 'About', 'Contact'].map((link) => (
-                                    <li key={link} style={{ marginBottom: '0.5rem' }}>
-                                        <a href="#" style={{ color: 'var(--text-light)', textDecoration: 'none' }}>
-                                            {link}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h3 style={{ marginBottom: '1rem' }}>Stay Connected</h3>
-                            <p style={{ color: 'var(--text-light)', marginBottom: '1rem', fontSize: '0.95rem' }}>
-                                Subscribe to our newsletter
-                            </p>
-                            <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
-                                <input
-                                    type="email"
-                                    placeholder="Your email"
-                                    style={{
-                                        padding: '0.75rem',
-                                        borderRadius: '0.375rem',
-                                        border: '2px solid var(--gray-light)',
-                                        fontSize: '0.95rem',
-                                        width: '200px'
-                                    }}
+                            {/* Message */}
+                            <div style={{ marginBottom: '2rem' }}>
+                                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.5rem', color: '#cbd5e1' }}>Message</label>
+                                <textarea
+                                    rows={4}
+                                    placeholder="Enter your message"
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    style={{ ...inputStyle, resize: 'vertical' }}
                                 />
-                                <button className="btn-primary" style={{ padding: '0.75rem 1.5rem' }}>→</button>
                             </div>
-                        </div>
+
+                            {/* Info & Socials Row */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem', fontSize: '0.9rem', color: '#94a3b8' }}>
+                                <div>
+                                    <div style={{ fontWeight: '600', color: 'white', marginBottom: '0.5rem' }}>Contact</div>
+                                    <div style={{ marginBottom: '0.25rem' }}>📧 sales@verdsoft.co.zw</div>
+                                    <div style={{ marginBottom: '0.25rem' }}>📞 +263 787 062 575</div>
+                                    <div style={{ marginBottom: '0.25rem' }}>📍 Harare, Zimbabwe</div>
+                                </div>
+                                <div>
+                                    <div style={{ fontWeight: '600', color: 'white', marginBottom: '0.5rem' }}>Social Media</div>
+                                    <div style={{ display: 'flex', gap: '1rem', fontSize: '1.2rem' }}>
+                                        <a href="#" style={{ color: '#94a3b8' }}>📘</a>
+                                        <a href="#" style={{ color: '#94a3b8' }}>🐦</a>
+                                        <a href="#" style={{ color: '#94a3b8' }}>📸</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Submit Button */}
+                            <div style={{ textAlign: 'center' }}>
+                                <button type="submit" style={{
+                                    background: '#C67C4E', // Bronze/Terracotta accent
+                                    color: 'white',
+                                    border: 'none',
+                                    padding: '0.75rem 3rem',
+                                    borderRadius: '0.5rem',
+                                    fontSize: '1rem',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                    boxShadow: '0 4px 15px rgba(198, 124, 78, 0.3)'
+                                }}>
+                                    Contact
+                                </button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            {/* SPACER for Footer (since map is absolute/fixed height) */}
+            <div style={{ height: '100px', background: '#f8fafc' }}></div>
 
             <Footer />
         </div>
     );
 }
+
+// Reusable Input Style
+const inputStyle = {
+    width: '100%',
+    padding: '0.875rem',
+    borderRadius: '0.5rem',
+    border: '1px solid rgba(255,255,255,0.1)',
+    background: 'white', // White input background as per image
+    color: '#0f172a',
+    fontSize: '0.95rem',
+    outline: 'none'
+};
