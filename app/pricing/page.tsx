@@ -110,7 +110,7 @@ export default function PricingPage() {
 
             {/* --- PRICING GRID --- */}
             <section style={{ padding: '6rem 0', background: '#f8fafc' }}>
-                <div className="container" style={{
+                <div className="container pricing-grid" style={{
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
@@ -135,102 +135,118 @@ function PricingCard({ tier, theme }: { tier: any, theme: any }) {
     const isHighlight = tier.highlight;
 
     return (
-        <div
-            style={{
-                flex: '0 1 350px',
-                background: 'white',
-                borderRadius: '16px',
-                padding: '2.5rem',
-                position: 'relative',
-                border: isHighlight ? `2px solid ${theme.accent}` : '1px solid #e2e8f0',
-                boxShadow: isHovered
-                    ? `0 20px 40px -10px rgba(0,0,0,0.15), 0 0 20px ${isHighlight ? 'rgba(198, 124, 78, 0.2)' : 'rgba(0,0,0,0.05)'}`
-                    : '0 4px 6px -1px rgba(0,0,0,0.05)',
-                transform: isHovered ? 'translateY(-10px)' : 'translateY(0)',
-                transition: 'all 0.3s ease',
-                zIndex: isHovered ? 10 : 1
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            {isHighlight && (
-                <div style={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    background: theme.accent,
-                    color: 'white',
-                    padding: '0.25rem 1rem',
-                    borderRadius: '50px',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                    boxShadow: '0 4px 10px rgba(198, 124, 78, 0.4)'
-                }}>
-                    {tier.tag}
-                </div>
-            )}
-
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: theme.navyDark, marginBottom: '0.5rem' }}>
-                    {tier.name}
-                </h3>
-                <p style={{ color: theme.textMuted, fontSize: '0.95rem', height: '40px' }}>
-                    {tier.description}
-                </p>
-            </div>
-
-            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-                <span style={{ fontSize: '3rem', fontWeight: '800', color: theme.navyDark }}>
-                    {tier.price}
-                </span>
-            </div>
-
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2.5rem 0', textAlign: 'left' }}>
-                {tier.features.map((feature: string, i: number) => (
-                    <li key={i} style={{
-                        marginBottom: '1rem',
-                        display: 'flex',
-                        alignItems: 'flex-start', // Top align icon
-                        color: theme.navyMedium,
-                        fontSize: '0.95rem'
-                    }}>
-                        <span style={{
-                            color: theme.success,
-                            marginRight: '0.75rem',
-                            fontSize: '1.2rem',
-                            fontWeight: 'bold',
-                            lineHeight: '1'
-                        }}>✓</span>
-                        {feature}
-                    </li>
-                ))}
-            </ul>
-
-            <button style={{
-                width: '100%',
-                padding: '1rem',
-                borderRadius: '8px',
-                border: 'none',
-                background: isHighlight ? theme.accent : theme.navyDark,
-                color: 'white',
-                fontWeight: '600',
-                fontSize: '1rem',
-                cursor: 'pointer',
-                transition: 'background 0.3s',
-                boxShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.1)' : 'none'
-            }}
-                onMouseEnter={(e) => {
-                    if (!isHighlight) e.currentTarget.style.background = theme.navyMedium;
-                    else e.currentTarget.style.background = theme.accentHover;
+        <>
+            <style jsx global>{`
+                @media (max-width: 768px) {
+                    .pricing-grid {
+                        flex-direction: column !important;
+                        align-items: center !important;
+                        gap: 2rem !important;
+                    }
+                    .pricing-grid > div {
+                        flex: 0 0 auto !important;
+                        width: 100% !important;
+                        max-width: 380px !important;
+                    }
+                }
+            `}</style>
+            <div
+                style={{
+                    flex: '0 1 350px',
+                    background: 'white',
+                    borderRadius: '16px',
+                    padding: '2.5rem',
+                    position: 'relative',
+                    border: isHighlight ? `2px solid ${theme.accent}` : '1px solid #e2e8f0',
+                    boxShadow: isHovered
+                        ? `0 20px 40px -10px rgba(0,0,0,0.15), 0 0 20px ${isHighlight ? 'rgba(198, 124, 78, 0.2)' : 'rgba(0,0,0,0.05)'}`
+                        : '0 4px 6px -1px rgba(0,0,0,0.05)',
+                    transform: isHovered ? 'translateY(-10px)' : 'translateY(0)',
+                    transition: 'all 0.3s ease',
+                    zIndex: isHovered ? 10 : 1
                 }}
-                onMouseLeave={(e) => {
-                    if (!isHighlight) e.currentTarget.style.background = theme.navyDark;
-                    else e.currentTarget.style.background = theme.accent;
-                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
             >
-                Get Started
-            </button>
-        </div>
+                {isHighlight && (
+                    <div style={{
+                        position: 'absolute',
+                        top: '-12px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        background: theme.accent,
+                        color: 'white',
+                        padding: '0.25rem 1rem',
+                        borderRadius: '50px',
+                        fontSize: '0.875rem',
+                        fontWeight: '600',
+                        boxShadow: '0 4px 10px rgba(198, 124, 78, 0.4)'
+                    }}>
+                        {tier.tag}
+                    </div>
+                )}
+
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: theme.navyDark, marginBottom: '0.5rem' }}>
+                        {tier.name}
+                    </h3>
+                    <p style={{ color: theme.textMuted, fontSize: '0.95rem', height: '40px' }}>
+                        {tier.description}
+                    </p>
+                </div>
+
+                <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+                    <span style={{ fontSize: '3rem', fontWeight: '800', color: theme.navyDark }}>
+                        {tier.price}
+                    </span>
+                </div>
+
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2.5rem 0', textAlign: 'left' }}>
+                    {tier.features.map((feature: string, i: number) => (
+                        <li key={i} style={{
+                            marginBottom: '1rem',
+                            display: 'flex',
+                            alignItems: 'flex-start', // Top align icon
+                            color: theme.navyMedium,
+                            fontSize: '0.95rem'
+                        }}>
+                            <span style={{
+                                color: theme.success,
+                                marginRight: '0.75rem',
+                                fontSize: '1.2rem',
+                                fontWeight: 'bold',
+                                lineHeight: '1'
+                            }}>✓</span>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+
+                <button style={{
+                    width: '100%',
+                    padding: '1rem',
+                    borderRadius: '8px',
+                    border: 'none',
+                    background: isHighlight ? theme.accent : theme.navyDark,
+                    color: 'white',
+                    fontWeight: '600',
+                    fontSize: '1rem',
+                    cursor: 'pointer',
+                    transition: 'background 0.3s',
+                    boxShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.1)' : 'none'
+                }}
+                    onMouseEnter={(e) => {
+                        if (!isHighlight) e.currentTarget.style.background = theme.navyMedium;
+                        else e.currentTarget.style.background = theme.accentHover;
+                    }}
+                    onMouseLeave={(e) => {
+                        if (!isHighlight) e.currentTarget.style.background = theme.navyDark;
+                        else e.currentTarget.style.background = theme.accent;
+                    }}
+                >
+                    Get Started
+                </button>
+            </div>
+        </>
     );
 }

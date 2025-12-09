@@ -2,10 +2,16 @@
 
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useRouter } from 'next/navigation';
 
 // --- SVG ICON COMPONENT ---
-const ServiceIcon = ({ type, color }) => {
-    const icons = {
+interface ServiceIconProps {
+    type: 'gear' | 'cloud' | 'mobile' | 'chat' | 'cart' | 'book' | 'server';
+    color: string;
+}
+
+const ServiceIcon = ({ type, color }: ServiceIconProps) => {
+    const icons: Record<string, JSX.Element> = {
         gear: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" />,
         cloud: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />,
         mobile: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />,
@@ -57,6 +63,8 @@ const CircuitBackground = ({ opacity = 0.15 }) => (
 );
 
 export default function ServicesPage() {
+    const router = useRouter();
+
     const featuredService = {
         title: 'Custom Software',
         desc: 'Tailored software for complex business needs. We design architectures that are scalable, robust, and specifically engineered to drive your company\'s growth.',
@@ -65,7 +73,7 @@ export default function ServicesPage() {
     };
 
     const gridServices = [
-        { iconType: 'cloud', title: 'Web & Hosting', desc: 'Secure, scalable platforms and comprehensive hosting solutions. We manage the infrastructure so you can focus on business growth.', glowColor: '#10b981' }, 
+        { iconType: 'cloud', title: 'Web & Hosting', desc: 'Secure, scalable platforms and comprehensive hosting solutions. We manage the infrastructure so you can focus on business growth.', glowColor: '#10b981' },
         { iconType: 'mobile', title: 'Mobile Apps', desc: 'Intuitive, high-performance apps for iOS and Android. We craft engaging user experiences that foster customer loyalty and retention.', glowColor: '#8b5cf6' },
         { iconType: 'mobile', title: 'App Development', desc: 'End-to-end mobile development from initial concept to global deployment. Our team handles the entire lifecycle of your mobile journey.', glowColor: '#6366f1' },
         { iconType: 'chat', title: 'IT Consultation', desc: 'Strategic IT guidance to help navigate digital transformation. Get expert advice on technology stacks, architecture, and best practices.', glowColor: '#f59e0b' },
@@ -74,17 +82,17 @@ export default function ServicesPage() {
     ];
 
     const bottomServices = [
-        { 
-            iconType: 'book', title: 'Training & Workshops', 
-            desc: 'Empowering your team with knowledge through hands-on workshops covering the latest technologies, methodologies, and best practices.', 
-            glowColor: '#ec4899', 
-            variant: 'light' 
+        {
+            iconType: 'book', title: 'Training & Workshops',
+            desc: 'Empowering your team with knowledge through hands-on workshops covering the latest technologies, methodologies, and best practices.',
+            glowColor: '#ec4899',
+            variant: 'light'
         },
-        { 
-            iconType: 'server', title: 'Mobile Hosting', 
-            desc: 'Specialized hosting solutions optimized for mobile backends. High-performance infrastructure with global CDN support for low latency.', 
-            glowColor: '#64748b', 
-            variant: 'dark' 
+        {
+            iconType: 'server', title: 'Mobile Hosting',
+            desc: 'Specialized hosting solutions optimized for mobile backends. High-performance infrastructure with global CDN support for low latency.',
+            glowColor: '#64748b',
+            variant: 'dark'
         }
     ];
 
@@ -93,10 +101,10 @@ export default function ServicesPage() {
             <Navigation />
 
             {/* --- HEADER SECTION --- */}
-            <section style={{ 
-                background: '#020617', 
-                color: 'white', 
-                padding: '10rem 0 6rem', 
+            <section className="hero-section" style={{
+                background: '#020617',
+                color: 'white',
+                padding: '10rem 0 6rem',
                 textAlign: 'center',
                 position: 'relative',
                 overflow: 'hidden'
@@ -114,31 +122,31 @@ export default function ServicesPage() {
                Flex Direction: Column + Align Items: Center 
                This is the secret sauce to ensure everything is perfectly aligned down the middle.
             */}
-            <div className="container" style={{ 
-                padding: '6rem 1rem', 
-                maxWidth: '1100px', 
+            <div className="container" style={{
+                padding: '6rem 1rem',
+                maxWidth: '1100px',
                 margin: '0 auto',
                 display: 'flex',          // 1. Activate Flexbox
                 flexDirection: 'column',  // 2. Stack vertically
                 alignItems: 'center'      // 3. FORCE CENTER ALIGNMENT
             }}>
-                
+
                 {/* --- 1. FEATURED SECTION --- */}
-                <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '4rem', 
+                <div className="featured-section" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4rem',
                     marginBottom: '8rem',
                     flexWrap: 'wrap',
                     justifyContent: 'center', // Ensures content within this block centers if it wraps
                     width: '100%'             // Take full width to respect parent alignment
                 }}>
                     {/* Hexagon Left */}
-                    <div style={{ 
+                    <div style={{
                         flex: '0 0 auto',
                         position: 'relative',
-                        width: '180px', 
-                        height: '180px', 
+                        width: '180px',
+                        height: '180px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -165,28 +173,28 @@ export default function ServicesPage() {
 
 
                 {/* --- 2. STANDARD GRID --- */}
-                <div style={{ 
-                    display: 'flex', 
+                <div className="services-grid" style={{
+                    display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center', // Forces the group of cards to center
-                    gap: '4rem', 
+                    gap: '4rem',
                     marginBottom: '8rem',
                     width: '100%' // Ensure grid has full width to calculate center
                 }}>
                     {gridServices.map((item, idx) => (
-                        <div key={idx} style={{ 
+                        <div key={idx} className="service-card" style={{
                             flex: '0 1 380px', // Flexible but prefers 380px width
-                            textAlign: 'left', 
-                            display: 'flex', 
-                            flexDirection: 'column', 
-                            alignItems: 'flex-start' ,
+                            textAlign: 'left',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
                             transform: 'translateX(40px)'
                         }}>
                             <div style={{
                                 width: '70px',
                                 height: '70px',
                                 borderRadius: '50%',
-                                background: '#e2e8f0', 
+                                background: '#e2e8f0',
                                 marginBottom: '1.5rem',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -200,45 +208,45 @@ export default function ServicesPage() {
                             <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a', marginBottom: '1rem' }}>
                                 {item.title}
                             </h3>
-                            
-                            <p style={{ 
-                                color: '#64748b', 
-                                fontSize: '1rem', 
-                                lineHeight: '1.7', 
+
+                            <p style={{
+                                color: '#64748b',
+                                fontSize: '1rem',
+                                lineHeight: '1.7',
                                 marginBottom: '1.5rem',
-                                maxWidth: '280px' 
+                                maxWidth: '280px'
                             }}>
                                 {item.desc}
                             </p>
-                            <button className="btn-service">Learn More</button>
+                            <button className="btn-service" onClick={() => router.push('/contact')}>Learn More</button>
                         </div>
                     ))}
                 </div>
 
 
                 {/* --- 3. BOTTOM SPECIAL CARDS --- */}
-                <div style={{ 
-                    display: 'flex', 
+                <div className="bottom-grid" style={{
+                    display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center', // Centers these two cards
                     gap: '2rem',
-                    width: '100%' 
+                    width: '100%'
                 }}>
                     {bottomServices.map((item, idx) => {
                         const isDark = item.variant === 'dark';
                         return (
-                            <div key={idx} style={{
+                            <div key={idx} className="bottom-card" style={{
                                 flex: '0 1 450px', // Wider cards
                                 borderRadius: '1.5rem',
                                 padding: '3rem',
                                 position: 'relative',
                                 overflow: 'hidden',
-                                background: isDark 
-                                    ? '#1e293b' 
+                                background: isDark
+                                    ? '#1e293b'
                                     : 'linear-gradient(145deg, #ffffff, #eff6ff)',
                                 border: isDark ? 'none' : '1px solid white',
-                                boxShadow: isDark 
-                                    ? '0 20px 40px rgba(0,0,0,0.2)' 
+                                boxShadow: isDark
+                                    ? '0 20px 40px rgba(0,0,0,0.2)'
                                     : '0 20px 40px rgba(59, 130, 246, 0.1)',
                                 textAlign: 'left'
                             }}>
@@ -257,26 +265,26 @@ export default function ServicesPage() {
                                     <ServiceIcon type={item.iconType} color={isDark ? '#cbd5e1' : item.glowColor} />
                                 </div>
 
-                                <h3 style={{ 
-                                    fontSize: '1.5rem', 
-                                    fontWeight: '700', 
+                                <h3 style={{
+                                    fontSize: '1.5rem',
+                                    fontWeight: '700',
                                     color: isDark ? 'white' : '#0f172a',
-                                    marginBottom: '1rem' 
+                                    marginBottom: '1rem'
                                 }}>
                                     {item.title}
                                 </h3>
-                                
-                                <p style={{ 
-                                    color: isDark ? '#94a3b8' : '#64748b', 
-                                    marginBottom: '2rem', 
-                                    lineHeight: '1.7', 
+
+                                <p style={{
+                                    color: isDark ? '#94a3b8' : '#64748b',
+                                    marginBottom: '2rem',
+                                    lineHeight: '1.7',
                                     fontSize: '1rem',
                                     maxWidth: '300px'
                                 }}>
                                     {item.desc}
                                 </p>
-                                
-                                <button className="btn-service">
+
+                                <button className="btn-service" onClick={() => router.push('/contact')}>
                                     Learn More
                                 </button>
                             </div>
@@ -301,6 +309,41 @@ export default function ServicesPage() {
                 .btn-service:hover {
                     transform: translateY(-2px);
                     box-shadow: 0 5px 15px rgba(198, 124, 78, 0.3);
+                }
+
+                @media (max-width: 768px) {
+                    .hero-section {
+                        padding: 6rem 0 3rem !important;
+                    }
+                    .featured-section {
+                        flex-direction: column !important;
+                        gap: 2rem !important;
+                        text-align: center !important;
+                        margin-bottom: 4rem !important;
+                    }
+                    .featured-section > div {
+                         text-align: center !important;
+                         align-items: center !important;
+                         min-width: unset !important;
+                    }
+                    .services-grid {
+                        gap: 3rem !important;
+                        margin-bottom: 4rem !important;
+                    }
+                    .service-card {
+                        flex: 0 0 100% !important;
+                        transform: none !important;
+                        align-items: center !important;
+                        text-align: center !important;
+                        padding: 0 1rem !important;
+                    }
+                    .bottom-grid {
+                        gap: 1.5rem !important;
+                    }
+                    .bottom-card {
+                        flex: 0 0 100% !important;
+                        padding: 2rem !important;
+                    }
                 }
             `}</style>
 

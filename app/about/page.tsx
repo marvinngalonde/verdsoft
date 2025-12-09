@@ -74,12 +74,12 @@ export default function AboutPage() {
             <Navigation />
 
             {/* --- HERO SECTION --- */}
-            <section style={{ 
-                background: '#020617', 
-                color: 'white', 
+            <section style={{
+                background: '#020617',
+                color: 'white',
                 padding: '8rem 0 12rem', // Increased padding for overlap
                 textAlign: 'center',
-                position: 'relative', 
+                position: 'relative',
                 overflow: 'hidden'
             }}>
                 <CircuitBackground />
@@ -95,17 +95,17 @@ export default function AboutPage() {
 
             {/* --- TEAM PHOTO OVERLAP --- */}
             <div className="container" style={{ marginTop: '-8rem', position: 'relative', zIndex: 2 }}>
-                <div style={{ 
-                    width: '100%', 
-                    height: '450px', 
-                    borderRadius: '1.5rem', 
-                    overflow: 'hidden', 
+                <div style={{
+                    width: '100%',
+                    height: '450px',
+                    borderRadius: '1.5rem',
+                    overflow: 'hidden',
                     position: 'relative',
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
                     border: '4px solid rgba(255,255,255,0.1)'
                 }}>
                     <Image
-                        src="/about-team.png" 
+                        src="/about-team.png"
                         alt="Team Collaboration"
                         fill
                         style={{ objectFit: 'cover' }}
@@ -138,7 +138,7 @@ export default function AboutPage() {
             <section style={{ padding: '6rem 0' }}>
                 <div className="container" style={{ maxWidth: '1000px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-                        <div style={{ 
+                        <div style={{
                             flex: '0 0 180px',
                             height: '200px',
                             background: '#f1f5f9',
@@ -150,25 +150,61 @@ export default function AboutPage() {
                             boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
                             position: 'relative'
                         }}>
-                             <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="1.5">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="1.5">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                 <polyline points="14 2 14 8 20 8"></polyline>
                                 <path d="M12 18v-4"></path>
                                 <path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
-                             </svg>
-                             {/* Decorative glowing dot */}
-                             <div style={{ position: 'absolute', top: '20px', right: '20px', width: '10px', height: '10px', background: '#06b6d4', borderRadius: '50%', boxShadow: '0 0 10px #06b6d4' }}></div>
+                            </svg>
+                            {/* Decorative glowing dot */}
+                            <div style={{ position: 'absolute', top: '20px', right: '20px', width: '10px', height: '10px', background: '#C67C4E', borderRadius: '50%', boxShadow: '0 0 10px #C67C4E' }}></div>
                         </div>
 
                         <div style={{ flex: 1 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                                <div style={{ height: '2px', width: '40px', background: '#dca585' }}></div>
-                                <span style={{ color: '#dca585', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Our Purpose</span>
+                                <div style={{ height: '2px', width: '40px', background: '#C67C4E' }}></div>
+                                <span style={{ color: '#C67C4E', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Our Purpose</span>
                             </div>
                             <h2 style={{ fontSize: '2.5rem', fontWeight: '700', color: '#0f172a', marginBottom: '1.5rem' }}>Mission Statement</h2>
                             <p style={{ color: '#64748b', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                                Our goal is to architect resilient digital ecosystems. We create bespoke software that not only solves today's challenges but anticipates tomorrow's opportunities.
-                                From robust cloud hosting to mobile innovation, we are the foundry for your digital success.
+                                We design and develop user-friendly apps and websites that help businesses thrive in a fast-changing world. Our mission is to deliver reliable, affordable, and innovative digital solutions that solve real problems, strengthen brands, and open doors for entrepreneurs in Zimbabwe and beyond.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- OUR VISION --- */}
+            <section style={{ padding: '6rem 0', background: 'white' }}>
+                <div className="container" style={{ maxWidth: '1000px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap', flexDirection: 'row-reverse' }}>
+                        <div style={{
+                            flex: '0 0 180px',
+                            height: '200px',
+                            background: 'linear-gradient(135deg, #C67C4E, #b56d40)',
+                            borderRadius: '1.5rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            boxShadow: '0 10px 30px rgba(198, 124, 78, 0.3)',
+                            position: 'relative'
+                        }}>
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            {/* Decorative glowing dot */}
+                            <div style={{ position: 'absolute', top: '20px', left: '20px', width: '10px', height: '10px', background: 'white', borderRadius: '50%', boxShadow: '0 0 10px white' }}></div>
+                        </div>
+
+                        <div style={{ flex: 1 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                                <div style={{ height: '2px', width: '40px', background: '#06b6d4' }}></div>
+                                <span style={{ color: '#06b6d4', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Our Future</span>
+                            </div>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: '700', color: '#0f172a', marginBottom: '1.5rem' }}>Vision Statement</h2>
+                            <p style={{ color: '#64748b', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                                To become one of Africa's most trusted digital creators—building apps and websites that empower businesses, unlock opportunities, and drive sustainable growth across the continent.
                             </p>
                         </div>
                     </div>
@@ -190,8 +226,8 @@ export default function AboutPage() {
                                 border: '1px solid #e2e8f0',
                                 transition: 'all 0.3s ease'
                             }}
-                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.borderColor = '#06b6d4'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = '#e2e8f0'; }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.borderColor = '#06b6d4'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = '#e2e8f0'; }}
                             >
                                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{val.icon}</div>
                                 <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.5rem' }}>{val.title}</h3>
@@ -233,7 +269,7 @@ export default function AboutPage() {
                 </div>
             </section> */}
 
-            
+
 
             {/* --- OUR TECH STACK (New Section) --- */}
             <section style={{ padding: '6rem 0', background: '#020617', position: 'relative' }}>
@@ -242,9 +278,9 @@ export default function AboutPage() {
                     <h2 style={{ color: 'white', marginBottom: '3rem' }}>Powered By</h2>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', opacity: 0.7 }}>
                         {['React', 'Next.js', 'Python', 'Docker', 'AWS', 'Supabase'].map((tech, idx) => (
-                            <div key={idx} style={{ 
-                                fontSize: '1.5rem', 
-                                color: '#94a3b8', 
+                            <div key={idx} style={{
+                                fontSize: '1.5rem',
+                                color: '#94a3b8',
                                 fontWeight: '600',
                                 border: '1px solid #1e293b',
                                 padding: '0.75rem 1.5rem',
@@ -315,25 +351,25 @@ export default function AboutPage() {
                                 position: 'relative',
                                 overflow: 'hidden'
                             }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.boxShadow = '0 20px 40px -10px rgba(0,0,0,0.1)';
-                                e.currentTarget.style.borderColor = item.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = 'none';
-                                e.currentTarget.style.borderColor = '#e2e8f0';
-                            }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-5px)';
+                                    e.currentTarget.style.boxShadow = '0 20px 40px -10px rgba(0,0,0,0.1)';
+                                    e.currentTarget.style.borderColor = item.color;
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                    e.currentTarget.style.borderColor = '#e2e8f0';
+                                }}
                             >
                                 {/* Top colored accent line */}
-                                <div style={{ 
-                                    position: 'absolute', 
-                                    top: 0, 
-                                    left: 0, 
-                                    width: '100%', 
-                                    height: '4px', 
-                                    background: item.color 
+                                <div style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '4px',
+                                    background: item.color
                                 }}></div>
 
                                 <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0f172a', marginBottom: '1rem', marginTop: '0.5rem' }}>

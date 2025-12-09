@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
 
 // --- REUSABLE BACKGROUND COMPONENT (Theme Consistency) ---
 const CircuitBackground = ({ opacity = 0.15 }) => (
@@ -41,13 +42,32 @@ const CircuitBackground = ({ opacity = 0.15 }) => (
 
 export default function WorkPage() {
     const projects = [
-        { name: 'Logistics Dashboard', image: '/project-logistics.png', category: 'Web App' },
-        { name: 'E-commerce Site', image: '/project-ecommerce.png', category: 'E-commerce' },
-        { name: 'Healthcare App', image: '/project-healthcare.png', category: 'Mobile' },
-        { name: 'Salesforce Sales', image: '/project-logistics.png', category: 'CRM' },
-        { name: 'Fashion Store', image: '/project-ecommerce.png', category: 'E-commerce' },
-        { name: 'EduTech Platform', image: '/project-healthcare.png', category: 'Web App' }
+        { name: 'Neocentric Interiors', image: '/neo.png', category: 'Web App' },
+        { name: 'VOP Mobile App', image: '/banvop.png', category: 'Mobile' },
+        { name: 'Kp3 App', image: '/kp3.png', category: 'Mobile' },
+        { name: 'POS BMS', image: '/posy.png', category: 'Business Management' },
+        { name: 'Neocentric Interiors', image: '/neo.png', category: 'Web Design' },
+        { name: 'VOP Mobile App', image: '/banvop.png', category: 'Mobile App' }
     ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } // Custom easing for "premium" feel
+        }
+    };
 
     return (
         <div className="min-h-screen" style={{ background: '#f8fafc' }}>
@@ -63,32 +83,47 @@ export default function WorkPage() {
                 overflow: 'hidden'
             }}>
                 <CircuitBackground />
-                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="container"
+                    style={{ position: 'relative', zIndex: 1 }}
+                >
                     <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1rem' }}>Our Work</h1>
                     <p style={{ maxWidth: '600px', margin: '0 auto', color: '#94a3b8', fontSize: '1.1rem' }}>
                         Discover our portfolio of successful projects and the impact we've made for our clients.
                     </p>
-                </div>
+                </motion.div>
             </section>
 
-            {/* --- SEARCH BAR --- */}
+            {/* --- SEARCH BAR OR FILTER --- */}
             <section style={{ background: '#f8fafc', padding: '4rem 0 2rem' }}>
-
+                {/* Future: Add Category Filters Here */}
             </section>
 
             {/* --- PORTFOLIO GRID (Borderless & Flat) --- */}
             <section style={{ padding: '0 0 8rem' }}>
                 <div className="container" style={{ maxWidth: '1100px' }}>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                        gap: '4rem 3rem' // Vertical Gap 4rem, Horizontal Gap 3rem
-                    }}>
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                            gap: '4rem 3rem' // Vertical Gap 4rem, Horizontal Gap 3rem
+                        }}
+                    >
                         {projects.map((project, idx) => (
-                            <div key={idx} style={{
-                                cursor: 'pointer',
-                                // No background, no shadow, no border radius on the container itself
-                            }}>
+                            <motion.div
+                                key={idx}
+                                variants={itemVariants}
+                                whileHover={{ y: -10 }}
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                            >
                                 {/* Image Container */}
                                 <div style={{
                                     position: 'relative',
@@ -97,7 +132,8 @@ export default function WorkPage() {
                                     background: '#cbd5e1', // Placeholder color
                                     borderRadius: '1rem', // Rounded corners on image only
                                     marginBottom: '1.25rem',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
                                 }}>
                                     <Image
                                         src={project.image}
@@ -105,7 +141,6 @@ export default function WorkPage() {
                                         fill
                                         style={{
                                             objectFit: 'cover',
-                                            transition: 'transform 0.5s ease'
                                         }}
                                         className="hover-zoom"
                                     />
@@ -113,8 +148,9 @@ export default function WorkPage() {
                                     <div className="hover-overlay" style={{
                                         position: 'absolute',
                                         inset: 0,
-                                        background: 'rgba(0,0,0,0)',
-                                        transition: 'background 0.3s ease'
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)',
+                                        opacity: 0,
+                                        transition: 'opacity 0.3s ease'
                                     }}></div>
                                 </div>
 
@@ -136,9 +172,9 @@ export default function WorkPage() {
                                         {project.category}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -149,7 +185,7 @@ export default function WorkPage() {
                         Featured Case Study
                     </h2>
 
-                    <div style={{
+                    <div className="case-study-flex" style={{
                         display: 'flex',
                         gap: '4rem',
                         alignItems: 'center',
@@ -165,31 +201,30 @@ export default function WorkPage() {
                             overflow: 'hidden',
                             background: '#f1f5f9'
                         }}>
-                            <div style={{
-                                position: 'absolute',
-                                inset: '0',
-                                background: '#1e293b',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: '#475569',
-                                fontSize: '1.5rem'
-                            }}>
-                                [Case Study Image]
-                            </div>
+                            <Image
+                                src="/posy.png"
+                                alt="POS BMS System"
+                                fill
+                                style={{
+                                    objectFit: 'cover'
+                                }}
+                            />
                         </div>
 
                         {/* Text Side */}
                         <div style={{ flex: 1, minWidth: '300px' }}>
-                            <div style={{ fontSize: '1.25rem', lineHeight: '1.6', color: '#334155', marginBottom: '2rem', fontStyle: 'italic' }}>
-                                "Nexus Solutions transformed our entire digital infrastructure. Their expertise resulted in a <span style={{ color: '#06b6d4', fontWeight: '700' }}>300% increase</span> in online engagement."
+                            <h3 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#0f172a', marginBottom: '1rem' }}>
+                                POS BMS - Business Management System
+                            </h3>
+                            <div style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#334155', marginBottom: '2rem', fontStyle: 'italic' }}>
+                                "VERDSOFT developed a comprehensive Point of Sale and Business Management System that streamlined our operations. The system resulted in a <span style={{ color: '#C67C4E', fontWeight: '700' }}>40% increase</span> in operational efficiency and significantly improved our inventory management."
                             </div>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#cbd5e1' }}></div>
+                                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#C67C4E' }}></div>
                                 <div>
-                                    <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '1rem' }}>Jane Doe</div>
-                                    <div style={{ color: '#64748b', fontSize: '0.85rem' }}>CEO, Global Corp</div>
+                                    <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '1rem' }}>Business Owner</div>
+                                    <div style={{ color: '#64748b', fontSize: '0.85rem' }}>Retail Management</div>
                                 </div>
                             </div>
                         </div>
@@ -197,10 +232,26 @@ export default function WorkPage() {
                 </div>
             </section>
 
-            {/* Global Hover Styles */}
+            {/* Global Hover Styles handled via Framer Motion mainly now, but we keep zoom */}
             <style jsx global>{`
-                .hover-zoom:hover {
-                    transform: scale(1.03);
+                .hover-zoom {
+                    transition: transform 0.6s ease !important;
+                }
+                div:hover .hover-zoom {
+                    transform: scale(1.05);
+                }
+                div:hover .hover-overlay {
+                    opacity: 1 !important;
+                }
+                @media (max-width: 768px) {
+                    .container {
+                        padding-left: 1.5rem !important;
+                        padding-right: 1.5rem !important;
+                    }
+                    .case-study-flex {
+                        flex-direction: column !important;
+                        gap: 2rem !important;
+                    }
                 }
             `}</style>
 

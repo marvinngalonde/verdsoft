@@ -1,6 +1,29 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+};
 
 export default function OurExpertise() {
     const services = [
@@ -50,41 +73,52 @@ export default function OurExpertise() {
             padding: '5rem 0'
         }}>
             <div className="container">
-                <h2 style={{
-                    textAlign: 'center',
-                    marginBottom: '3.5rem',
-                    color: '#0f172a',
-                    fontSize: '2.5rem',
-                    fontWeight: '700'
-                }}>
+                <motion.h2
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    style={{
+                        textAlign: 'center',
+                        marginBottom: '3.5rem',
+                        color: '#0f172a',
+                        fontSize: '2.5rem',
+                        fontWeight: '700'
+                    }}
+                >
                     Our Expertise
-                </h2>
+                </motion.h2>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-                    gap: '2rem'
-                }}>
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+                        gap: '2rem'
+                    }}
+                >
                     {services.map((service, idx) => (
-                        <div key={idx} style={{
-                            backgroundColor: '#0f172a', // The "Component Color" (Dark Navy)
-                            borderRadius: '16px',
-                            padding: '2.5rem',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            // Blue Glow Effect
-                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(56, 189, 248, 0.2)',
-                            border: '1px solid rgba(56, 189, 248, 0.1)', // Subtle tech border
-                            transition: 'all 0.3s ease',
-                            zIndex: 1
-                        }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.boxShadow = '0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.4)';
+                        <motion.div
+                            key={idx}
+                            variants={itemVariants}
+                            whileHover={{
+                                y: -8,
+                                boxShadow: '0 20px 40px -5px rgba(0, 0, 0, 0.2), 0 0 30px rgba(56, 189, 248, 0.4)'
                             }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(56, 189, 248, 0.2)';
+                            style={{
+                                backgroundColor: '#0f172a', // The "Component Color" (Dark Navy)
+                                borderRadius: '16px',
+                                padding: '2.5rem',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                // Blue Glow Effect
+                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(56, 189, 248, 0.2)',
+                                border: '1px solid rgba(56, 189, 248, 0.1)', // Subtle tech border
+                                zIndex: 1,
+                                cursor: 'default'
                             }}
                         >
                             {/* --- BACKGROUND IMAGE LAYER --- */}
@@ -103,7 +137,7 @@ export default function OurExpertise() {
                                     src={service.bgImage}
                                     alt=""
                                     fill
-                                    style={{ 
+                                    style={{
                                         objectFit: 'cover',
                                         opacity: 0.6 // Adjust image visibility
                                     }}
@@ -152,9 +186,9 @@ export default function OurExpertise() {
                                     {service.desc}
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
