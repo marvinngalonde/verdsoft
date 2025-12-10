@@ -39,7 +39,7 @@ const CircuitBackground = () => (
     </div>
 );
 
-const SocialIcon = ({ path }) => (
+const SocialIcon = ({ path }: { path: string }) => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d={path} />
     </svg>
@@ -179,8 +179,8 @@ export default function Footer() {
                                     outline: 'none',
                                     backdropFilter: 'blur(5px)'
                                 }}
-                                onFocus={(e) => e.target.style.borderColor = '#06b6d4'}
-                                onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
+                                onFocus={(e) => e.currentTarget.style.borderColor = '#06b6d4'}
+                                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
                             />
                             <button style={{
                                 padding: '0.75rem 1.25rem',
@@ -191,8 +191,8 @@ export default function Footer() {
                                 cursor: 'pointer',
                                 transition: 'background 0.3s'
                             }}
-                                onMouseEnter={(e) => e.target.style.background = '#0891b2'}
-                                onMouseLeave={(e) => e.target.style.background = '#06b6d4'}
+                                onMouseEnter={(e) => e.currentTarget.style.background = '#0891b2'}
+                                onMouseLeave={(e) => e.currentTarget.style.background = '#06b6d4'}
                             >
                                 →
                             </button>
