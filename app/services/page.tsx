@@ -69,28 +69,28 @@ export default function ServicesPage() {
     const featuredService = {
         title: 'Custom Software',
         desc: 'Tailored software for complex business needs. We design architectures that are scalable, robust, and specifically engineered to drive your company\'s growth.',
-        iconType: 'gear',
+        iconType: 'gear' as const,
         glowColor: '#3b82f6'
     };
 
     const gridServices = [
-        { iconType: 'cloud', title: 'Web & Hosting', desc: 'Secure, scalable platforms and comprehensive hosting solutions. We manage the infrastructure so you can focus on business growth.', glowColor: '#10b981' },
-        { iconType: 'mobile', title: 'Mobile Apps', desc: 'Intuitive, high-performance apps for iOS and Android. We craft engaging user experiences that foster customer loyalty and retention.', glowColor: '#8b5cf6' },
-        { iconType: 'mobile', title: 'App Development', desc: 'End-to-end mobile development from initial concept to global deployment. Our team handles the entire lifecycle of your mobile journey.', glowColor: '#6366f1' },
-        { iconType: 'chat', title: 'IT Consultation', desc: 'Strategic IT guidance to help navigate digital transformation. Get expert advice on technology stacks, architecture, and best practices.', glowColor: '#f59e0b' },
-        { iconType: 'cart', title: 'Software Sales', desc: 'Curated software solutions for your business needs. We provide licensed, enterprise-grade software to streamline your operations.', glowColor: '#06b6d4' },
-        { iconType: 'cloud', title: 'Web Development', desc: 'Performance-optimized web solutions with 24/7 monitoring. We build sites that are fast, responsive, and SEO-friendly.', glowColor: '#3b82f6' },
+        { iconType: 'cloud' as const, title: 'Web & Hosting', desc: 'Secure, scalable platforms and comprehensive hosting solutions. We manage the infrastructure so you can focus on business growth.', glowColor: '#10b981' },
+        { iconType: 'mobile' as const, title: 'Mobile Apps', desc: 'Intuitive, high-performance apps for iOS and Android. We craft engaging user experiences that foster customer loyalty and retention.', glowColor: '#8b5cf6' },
+        { iconType: 'mobile' as const, title: 'App Development', desc: 'End-to-end mobile development from initial concept to global deployment. Our team handles the entire lifecycle of your mobile journey.', glowColor: '#6366f1' },
+        { iconType: 'chat' as const, title: 'IT Consultation', desc: 'Strategic IT guidance to help navigate digital transformation. Get expert advice on technology stacks, architecture, and best practices.', glowColor: '#f59e0b' },
+        { iconType: 'cart' as const, title: 'Software Sales', desc: 'Curated software solutions for your business needs. We provide licensed, enterprise-grade software to streamline your operations.', glowColor: '#06b6d4' },
+        { iconType: 'cloud' as const, title: 'Web Development', desc: 'Performance-optimized web solutions with 24/7 monitoring. We build sites that are fast, responsive, and SEO-friendly.', glowColor: '#3b82f6' },
     ];
 
     const bottomServices = [
         {
-            iconType: 'book', title: 'Training & Workshops',
+            iconType: 'book' as const, title: 'Training & Workshops',
             desc: 'Empowering your team with knowledge through hands-on workshops covering the latest technologies, methodologies, and best practices.',
             glowColor: '#ec4899',
             variant: 'light'
         },
         {
-            iconType: 'server', title: 'Mobile Hosting',
+            iconType: 'server' as const, title: 'Mobile Hosting',
             desc: 'Specialized hosting solutions optimized for mobile backends. High-performance infrastructure with global CDN support for low latency.',
             glowColor: '#64748b',
             variant: 'dark'
