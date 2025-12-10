@@ -29,7 +29,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
             <motion.div
                 initial={{ scale: 1.1, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
+                transition={{ duration: 1.5, ease: "easeOut" as const }}
                 style={{
                     position: 'absolute',
                     top: 0,
@@ -62,7 +62,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
             {/* 3. TECH CIRCUIT PATTERN (Left Side Subtle Detail) */}
             <motion.div
                 animate={{ opacity: [0.1, 0.15, 0.1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" as const }}
                 style={{
                     position: 'absolute',
                     top: 0,

@@ -21,7 +21,7 @@ const TechCrossingArrow = () => (
         <motion.g
             opacity="0.4"
             animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
         >
             <path d="M0 30 L 285 30" stroke="#06b6d4" strokeWidth="8" strokeLinecap="round" />
             <path d="M275 20 L 285 30 L 275 40" stroke="#06b6d4" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
@@ -45,7 +45,7 @@ const TechCrossingArrow = () => (
                     offsetPath: "path('M40 50 L 120 50 L 180 10 L 260 10')",
                     opacity: 0.8
                 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" as const }}
             />
 
             <circle cx="40" cy="50" r="3" fill="#22d3ee" />
